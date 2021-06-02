@@ -1,0 +1,29 @@
+<!-- {{Inquiry[0].DOC_NUMBER}} -->
+
+<div class="a">
+    <h2>Inquiry details</h2>
+    <div class="cardholder" *ngFor="let card of Inquiry; index as i">
+        <div class="card" id="card{{i}}" style="">
+            <!-- <p>SOLD TO{{card.SOLD_TO}}</p> -->
+            <div class="cardhead">
+                <h3>Inquiry Header</h3>
+                <p>DOCUMENT NUMBER : {{card.DOC_NUMBER}} </p>
+                <p>REC DATE : {{card.REC_DATE}}</p>
+                <p>REC TIME : {{card.REC_TIME}}</p>
+                <p>CREATED BY : {{card.CREATED_BY}}</p>
+
+            </div>
+            <mat-divider></mat-divider>
+            <div class="carditem">
+                <h3>Inquiry Item</h3>
+                <p>MATERIAL : {{card.MATERIAL}}</p>
+                <p>MATL GROUP : {{card.MATL_GROUP}}</p>
+                <p>ITM NUMBER : {{card.ITM_NUMBER}}</p>
+                <p>SHORT TEXT : {{card.SHORT_TEXT}}</p>
+                <p>REQ QTY : {{card.REQ_QTY}}</p>
+                <p>NET PRICE : {{card.NET_PRICE}}</p>
+                <p>NET WEIGHT : {{card.NET_WEIGHT}}</p>
+            </div>
+        </div>
+    </div>
+</div>

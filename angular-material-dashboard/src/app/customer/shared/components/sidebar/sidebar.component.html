@@ -1,0 +1,35 @@
+<mat-nav-list>
+    <div class=" profile-card">
+        <img src="../../../../assets/images/profilepicture.png" alt="">
+        <h4>{{user_id}}</h4>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Sales data
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/customer/inquiry">Inquiry</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/customer/sales">Sales order</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/customer/delivery">List of Delivery</a>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Finance sheet
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/customer/credit">Credit</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/customer/debit">Debit</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/customer/invoice">Invoice</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/customer/paymentaging">Payment aging</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/customer/overallsales">Overall sales</a>
+
+    </mat-expansion-panel>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/customer/masterupload">Master data Upload</a>
+
+
+</mat-nav-list>

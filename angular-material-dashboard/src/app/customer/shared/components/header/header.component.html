@@ -1,0 +1,46 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="toggleSideBar()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <span>Customer </span>
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <!-- <ul fxLayout="row" fxLayoutGap="20px"> -->
+
+            <!-- <li> -->
+            <!-- <button mat-button (click)="onProfile()">
+                <mat-icon>person_identity</mat-icon>
+            </button> -->
+
+
+            <button mat-button (click)="onProfile()">
+                <mat-icon>person_outline</mat-icon>
+            </button>
+            <!-- <button mat-button>
+                <mat-icon>exit_to_app</mat-icon>
+
+            </button> -->
+
+            <button mat-button [matMenuTriggerFor]=" menu">
+                <mat-icon>settings</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <ng-template matMenuContent>
+                    <!-- <button mat-menu-item (click)="onProfile()">
+                        <mat-icon>person_identity</mat-icon>
+                        Profile
+                    </button> -->
+                    <button mat-menu-item (click)="onSignOut()">
+                        <mat-icon>exit_to_app</mat-icon>
+                        Sign out
+                    </button>
+                </ng-template>
+            </mat-menu>
+
+            <!-- </li> -->
+            <!-- </ul> -->
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

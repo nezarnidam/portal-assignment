@@ -1,0 +1,27 @@
+<div>
+    <h2>Customer login</h2>
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Customer id</mat-label>
+        <input [(ngModel)]="userid" matInput placeholder="enter customer id">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>password</mat-label>
+        <input [(ngModel)]="pass" matInput placeholder="enter customer id" type="password">
+    </mat-form-field>
+    <mat-card *ngIf="er" style="background-color: rgb(231, 185, 185); height: 15px; width: 180px;">
+        wrong credentials
+    </mat-card>
+    <button mat-button (click)="login()">
+        <mat-icon>account_circle</mat-icon> Log in
+    </button>
+
+    <button mat-button (click)="home()">
+
+        <mat-icon>home</mat-icon>Home
+    </button>
+
+
+</div>

@@ -1,0 +1,92 @@
+
+.a{
+    margin: 0;
+    padding: 0;
+    font-family:   sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e1e7eb;
+    //background-image: url('../../../assets/images/landingpage.jpg');
+    font-size: 20px;
+    height: 100%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+.container{
+    position: relative;
+    width: 1100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 30px;   
+}
+
+.container .card {
+    position: relative;
+    border-radius: 5px;
+    // max-width: 300px;
+    max-width: 250px;
+   // height: 215px;
+   height: 100px;
+    background: rgb(255, 255, 255);
+    // margin: 30px 10px;
+    margin: 30px 10px;
+    
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 20px rbga(0,0,0,0.5);
+    transition: 0.3s ease-in-out;
+}
+
+.container .card:hover{
+//    height: 450px;
+   height: 250px;
+    background-color: rgb(195, 204, 204);
+}
+// .container .card .imgbx{
+//     position: relative;
+//     width: 260px;
+//     height: 260px;
+//     top: -60px;
+//     left: 20px;
+//     z-index: 1;
+//     box-shadow: o 5px 20px  rgba(0,0,0,0.2);
+// }
+
+.container .card .imgbx img{
+    max-width: 100%;
+    border-radius: 4px;
+
+}
+.container .card .content{
+    position: relative;
+    margin-top: -140px;
+    padding: 10px 15px;
+    text-align: center;
+    color: #111;
+    visibility: hidden;
+    opacity: 0;
+    transition:  ease-in-out; 
+    // transition: 0.2s ease-in-out; 
+    // transition: 0.3s ease-out;
+
+}
+.container .card:hover .content{
+    visibility:visible;
+    opacity: 1 ;
+    margin-top: -40px;
+    // transition-delay: 0.3s;
+    transition-delay: 0.2s;
+
+
+}
+
+button{
+    width: 200px;
+    height: 50px;
+    border-radius: 4px;
+    font-size: 20px;
+}

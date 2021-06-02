@@ -1,0 +1,58 @@
+<div class="view">
+    <h2>Profile </h2>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Customer id</mat-label>
+            <input [(ngModel)]="custid" matInput disabled>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>First name</mat-label>
+            <input [(ngModel)]="fname" matInput [disabled]="!editing">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Second name </mat-label>
+            <input [(ngModel)]="sname" matInput [disabled]="!editing">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Street </mat-label>
+            <input [(ngModel)]="street" matInput [disabled]="!editing">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>city </mat-label>
+            <input [(ngModel)]="city" matInput [disabled]="!editing">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>State </mat-label>
+            <input [(ngModel)]="state" matInput [disabled]="!editing">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Country </mat-label>
+            <input [(ngModel)]="country" matInput [disabled]="!editing">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Post </mat-label>
+            <input [(ngModel)]="post" matInput [disabled]="!editing">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Mobile Number </mat-label>
+            <input [(ngModel)]="mobilenumber" matInput [disabled]="!editing">
+        </mat-form-field>
+    </p>
+    <p><button mat-button (click)="OnEdit()">{{btn}}</button>
+        <button mat-button [disabled]="!editing" (click)="OnSave()">Save</button>
+        <!-- <button mat-button (click)="OnCancel()" [disabled]="!editing">Cancel</button> -->
+    </p>
+
+</div>

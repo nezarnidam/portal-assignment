@@ -1,0 +1,19 @@
+{
+  "name": "nodepack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "camaro": "^6.1.0",
+    "easy-soap-request": "^4.1.3",
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "xlsx": "^0.17.0"
+  }
+}

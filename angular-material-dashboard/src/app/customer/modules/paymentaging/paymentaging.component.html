@@ -1,0 +1,34 @@
+<!-- {{Inquiry[0].DOC_NUMBER}} -->
+
+<div class="a">
+    <h2>Payments Aging</h2>
+    <div class="cardholder" *ngFor="let card of paymentagingDetails; index as i">
+        <div class="card" id="card{{i}}">
+            <!-- <p>SOLD TO{{card.SOLD_TO}}</p> -->
+            <!-- <div class="cardhead"> -->
+            <!-- <h3>Inquiry Header</h3> -->
+            <p>COMP CODE : {{card.COMP_CODE}}</p>
+            <p>CUSTOMER : {{card.CUSTOMER}} </p>
+            <p>ALLOC NUM : {{card.ALLOC_NUM}}</p>
+            <p>FISC YEAR : {{card.FISC_YEAR}}</p>
+            <p>ITEM NUM : {{card.ITEM_NUM}}</p>
+            <!-- <p>CREATED BY : {{card.ITM_NUMBER}}</p> -->
+
+            <!-- </div> -->
+            <!-- <mat-divider></mat-divider> -->
+            <!-- <div class="carditem"> -->
+            <!-- <h3>Inquiry Item</h3> -->
+            <p>BILL DOC : {{card.BILL_DOC}}</p>
+
+            <p>POSTING DATE : {{card.POSTING_DATE}}</p>
+            <p>PAYMENT TERMS : {{card.PAYMENT_TERMS}}</p>
+            <p>AMNT LOCAL : {{card.AMNT_LOCAL}}</p>
+
+
+            <p>AMNT DOC : {{card.AMNT_DOC}}</p>
+            <p>TAX LOCAL : {{card.TAX_LOCAL}}</p>
+            <p>PAY AGING : {{card.PAY_AGING}}</p>
+            <!-- </div> -->
+        </div>
+    </div>
+</div>

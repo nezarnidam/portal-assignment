@@ -1,0 +1,32 @@
+
+div{
+    display: flex;
+    flex-direction: column;
+    //margin-left: 20px;
+    justify-content: center;
+    align-items: center;
+    //background-image: url('../../../assets/images/landingpage.jpg');
+    height: 100%;
+    background: #e1e7eb;
+    //width: 50%;
+    //flex-wrap: wrap;
+   // background-color: rgb(119, 155, 155);
+   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+h2{
+   // font-size: 30px;
+   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+button{
+    font-size: 20px;
+    width: 100px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+input{
+    font-size: 20px;
+    //width: 400px;
+}

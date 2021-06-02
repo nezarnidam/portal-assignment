@@ -1,0 +1,33 @@
+.generalbody{
+    padding-left: 75px;
+}
+ 
+.container {
+    padding: 20px;
+}
+ 
+table, th,tr, td {
+    border: 1px solid black;
+  }
+ 
+.json_container {
+    font-size: 20px;
+    padding: 20px;
+ 
+    padding-left: 400px;
+    padding-right: 400px;
+}
+ 
+body {
+    margin: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f3f3f3;
+}
+ 
+.center {
+    text-align: center;
+}

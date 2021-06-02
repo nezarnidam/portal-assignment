@@ -1,0 +1,36 @@
+<body>
+    <div class="container center">
+        <h3>Customer Master Data</h3>
+        <h6>Upload File (.xls or .xlsx)</h6>
+        <br>
+        <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file"
+            accept=".xls, .xlsx">
+        <br><br>
+        <button type="button" class="btn btn-info" (click)="upload()">Submit</button>
+        <br><br>
+        <div class="jumbotron json_container center">
+            <h5>Status:</h5><br>
+            {{JSONObject.string}}
+
+            <table *ngIf="isData" class="center">
+                <thead class="center">
+                    <tr>
+                        <th>Row#</th>
+                        <th>New ID</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody class="center">
+                    <tr *ngFor="let item of customer_master">
+                        <th>{{ item.row }}</th>
+                        <td>{{ item.ref_custId}}</td>
+                        <td>{{ item.status }}</td>
+                        <!-- <td>
+                      <button type="button" >Delete</button>
+                  </td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
