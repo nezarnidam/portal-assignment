@@ -22,7 +22,7 @@ export class LandingComponent implements OnInit {
   }
   onVendorLogin() {
     //  alert("couldnt connect");
-
+    this.route.navigate(["/vendorlogin"]);
   }
   onEmployeeLogin() {
     // alert("couldnt connect");

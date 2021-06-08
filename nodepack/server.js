@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.raw());
 customerid = -1;
+vendorid = -1;
 const sampleHeaders = {
     'user-agent': 'sampleTest',
     'Content-Type': 'text/xml;charset=UTF-8',
@@ -724,11 +725,71 @@ app.post('/customerMaster', (req, res) => {
 //CUSTOMER MASTER ENDS
 
 
+//VENDOR LOGIN
+
+const vendorLogin_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDORLOGINNZ';
+const vendorLogin_xml = (vendor, password) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_VENDOR_LOGIN_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <PASSWORD>${password}</PASSWORD>
+       <USERNAME>${vendor}</USERNAME>
+    </ns0:ZBAPI_VENDOR_LOGIN_NZ>`
+    return xml;
+}
+
+const vendorlogin = async (vendor, password) => {
+    let resData;
+    const { response } = await soapRequest({ url: vendorLogin_url, headers: sampleHeaders, xml: vendorLogin_xml(vendor, password), timeout: 10000 }); // Optional timeout parameter(milliseconds)
+    const { headers, body, statusCode } = response;
+
+    resData = body.RESULT;
 
 
+    return resData;
+};
+
+app.post('/vendorLogin', (req, res) => {
+
+    vendor = req.body.vendorid;
+    password = req.body.password;
+    let prom = vendorlogin(vendor, password);
+    prom.then((dat) => {
+        console.log(vendor);
+        console.log(dat);
+        if (dat.RESULT == 'S') {
+            global.vendorid = vendor;
+            console.log(vendor);
+        }
+        res.send(dat);
+    });
+})
+
+// VENDOR LOGIN ENDS
+
+//GET VENDOR ID
+app.post('/getVendorid', (req, res) => {
+    console.log("id -- " + vendorid);
+    res.send({ vendor_id: vendorid });
+})
 
 
+//VENDOR AUTHORIZATION
 
+app.post('/vendorLoggedin', (req, res) => {
+    if (vendorid == -1) {
+        res.send({ status: 'no' });
+    } else {
+        res.send({ status: 'yes' });
+    }
+})
+
+//VENDOR SIGN OUT
+
+
+app.post('/vendorSignout', (req, res) => {
+    vendorid = -1;
+    res.send({ status: 'successfully logged out' });
+})
 
 
 app.listen(port, () => {

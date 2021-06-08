@@ -1,0 +1,27 @@
+<div>
+    <h2>Vendor login</h2>
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Vendor id</mat-label>
+        <input [(ngModel)]="vendorid" matInput placeholder="enter vendor id">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>password</mat-label>
+        <input [(ngModel)]="pass" matInput placeholder="enter password" type="password">
+    </mat-form-field>
+    <mat-card *ngIf="er" style="background-color: rgb(231, 185, 185); height: 15px; width: 180px;">
+        wrong credentials
+    </mat-card>
+    <button mat-button (click)="login()">
+        <mat-icon>account_circle</mat-icon> Log in
+    </button>
+
+    <button mat-button (click)="home()">
+
+        <mat-icon>home</mat-icon>Home
+    </button>
+
+
+</div>

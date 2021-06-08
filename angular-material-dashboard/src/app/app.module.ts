@@ -22,11 +22,18 @@ import { DebitComponent } from './customer/modules/debit/debit.component';
 import { PaymentagingComponent } from './customer/modules/paymentaging/paymentaging.component';
 import { InvoiceComponent } from './customer/modules/invoice/invoice.component';
 import { MasterdataComponent } from './customer/modules/masterdata/masterdata.component';
+import { VendorloginComponent } from './vendor/vendorlogin/vendorlogin.component';
+import { VendordashModule } from './vendor/vendordash/vendordash.module';
+import { DefaultComponent } from './customer/layouts/default/default.component';
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
     CustomerloginComponent,
+
+    VendorloginComponent,
+
+
     // ProfileComponent,
     // InquiryComponent,
     // SalesComponent,
@@ -49,7 +56,8 @@ import { MasterdataComponent } from './customer/modules/masterdata/masterdata.co
     MatDividerModule,
     MatIconModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    VendordashModule
   ],
   providers: [CustomerAuthService],
   bootstrap: [AppComponent]

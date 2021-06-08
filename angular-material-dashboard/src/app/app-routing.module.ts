@@ -14,6 +14,9 @@ import { DebitComponent } from './customer/modules/debit/debit.component';
 import { PaymentagingComponent } from './customer/modules/paymentaging/paymentaging.component';
 import { InvoiceComponent } from './customer/modules/invoice/invoice.component';
 import { MasterdataComponent } from './customer/modules/masterdata/masterdata.component';
+import { VendorloginComponent } from './vendor/vendorlogin/vendorlogin.component';
+import { VendordashComponent } from './vendor/vendordash/vendordash.component';
+import { DefaultVendorComponent } from './vendor/modules/default/default.component';
 
 const routes: Routes = [{
   path: '',
@@ -22,6 +25,10 @@ const routes: Routes = [{
 {
   path: 'customerlogin',
   component: CustomerloginComponent
+},
+{
+  path: 'vendorlogin',
+  component: VendorloginComponent
 },
 {
   path: 'customer',
@@ -69,6 +76,17 @@ const routes: Routes = [{
     path: 'masterupload',
     component: MasterdataComponent
   }]
+},
+{
+  path: 'vendor',
+  component: VendordashComponent,
+  children: [
+    {
+      path: '',
+      component: DefaultVendorComponent
+
+    }
+  ]
 }];
 
 @NgModule({
