@@ -17,6 +17,11 @@ import { MasterdataComponent } from './customer/modules/masterdata/masterdata.co
 import { VendorloginComponent } from './vendor/vendorlogin/vendorlogin.component';
 import { VendordashComponent } from './vendor/vendordash/vendordash.component';
 import { DefaultVendorComponent } from './vendor/modules/default/default.component';
+import { VendorprofileComponent } from './vendor/modules/vendorprofile/vendorprofile.component';
+import { VendorRFQComponent } from './vendor/modules/vendor-rfq/vendor-rfq.component';
+import { VendorcreditComponent } from './vendor/modules/vendorcredit/vendorcredit.component';
+import { VendordebitComponent } from './vendor/modules/vendordebit/vendordebit.component';
+import { VendorpaymentagingComponent } from './vendor/modules/vendorpaymentaging/vendorpaymentaging.component';
 
 const routes: Routes = [{
   path: '',
@@ -84,7 +89,26 @@ const routes: Routes = [{
     {
       path: '',
       component: DefaultVendorComponent
-
+    },
+    {
+      path: 'profile',
+      component: VendorprofileComponent
+    },
+    {
+      path: 'RFQ',
+      component: VendorRFQComponent
+    },
+    {
+      path: 'credit',
+      component: VendorcreditComponent
+    },
+    {
+      path: 'debit',
+      component: VendordebitComponent
+    },
+    {
+      path: 'paymentaging',
+      component: VendorpaymentagingComponent
     }
   ]
 }];

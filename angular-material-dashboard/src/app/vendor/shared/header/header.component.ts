@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onProfile() {
-
+    this.router.navigate(['vendor/profile']);
   }
 
   onSignOut() {

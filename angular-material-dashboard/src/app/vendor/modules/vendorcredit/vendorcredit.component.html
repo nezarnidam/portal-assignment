@@ -1,0 +1,19 @@
+<!-- {{Inquiry[0].DOC_NUMBER}} -->
+
+<div class="a">
+    <h2>Credit</h2>
+    <div class="cardholder" *ngFor="let card of creditData; index as i">
+        <div class="card" id="card{{i}}">
+            <!-- <p>SOLD TO{{card.SOLD_TO}}</p> -->
+            <p>MANDT : {{card.MANDT}}</p>
+            <p>BUKRS : {{card.BUKRS}}</p>
+            <p>GJAHR : {{card.GJAHR}}</p>
+            <p>BELNR : {{card.BELNR}}</p>
+            <p>BUDAT : {{card.BUDAT}}</p>
+            <p>BLDAT : {{card.BLDAT}}</p>
+            <p>WAERS : {{card.WAERS}}</p>
+            <p>DMBTR : {{card.DMBTR}}</p>
+            <p>ZFBDT : {{card.ZFBDT}}</p>
+        </div>
+    </div>
+</div>

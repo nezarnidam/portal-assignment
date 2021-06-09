@@ -1,0 +1,19 @@
+<!-- {{Inquiry[0].DOC_NUMBER}} -->
+
+<div class="a">
+    <h2>Payments and aging</h2>
+    <div class="cardholder" *ngFor="let card of paymentagingData; index as i">
+        <div class="card" id="card{{i}}">
+            <!-- <p>SOLD TO{{card.SOLD_TO}}</p> -->
+            <p>COMP_CODE : {{card.COMP_CODE}}</p>
+            <p>FISC_YEAR : {{card.FISC_YEAR}}</p>
+            <p>DOC_NO : {{card.DOC_NO}}</p>
+            <p>ITEM_NUM : {{card.ITEM_NUM}}</p>
+            <p>PSTNG_DATE : {{card.PSTNG_DATE}}</p>
+            <p>DOC_DATE : {{card.DOC_DATE}}</p>
+            <p>CURRENCY : {{card.CURRENCY}}</p>
+            <p>LC_AMOUNT : {{card.LC_AMOUNT}}</p>
+            <p>BLINE_DATE : {{card.BLINE_DATE}}</p>
+        </div>
+    </div>
+</div>

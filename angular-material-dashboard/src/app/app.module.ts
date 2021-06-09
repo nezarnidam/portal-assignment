@@ -24,7 +24,8 @@ import { InvoiceComponent } from './customer/modules/invoice/invoice.component';
 import { MasterdataComponent } from './customer/modules/masterdata/masterdata.component';
 import { VendorloginComponent } from './vendor/vendorlogin/vendorlogin.component';
 import { VendordashModule } from './vendor/vendordash/vendordash.module';
-import { DefaultComponent } from './customer/layouts/default/default.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,15 +35,7 @@ import { DefaultComponent } from './customer/layouts/default/default.component';
     VendorloginComponent,
 
 
-    // ProfileComponent,
-    // InquiryComponent,
-    // SalesComponent,
-    // DeliveryComponent,
-    // CreditComponent,
-    // DebitComponent,
-    // PaymentagingComponent,
-    // InvoiceComponent,
-    // MasterdataComponent
+
   ],
   imports: [
     BrowserModule,

@@ -7,11 +7,21 @@ import { MatSidenavModule, MatDividerModule, MatFormFieldModule, MatInputModule,
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { DefaultVendorComponent } from '../modules/default/default.component';
+import { VendorprofileComponent } from '../modules/vendorprofile/vendorprofile.component';
+import { VendorRFQComponent } from '../modules/vendor-rfq/vendor-rfq.component';
+import { VendorcreditComponent } from '../modules/vendorcredit/vendorcredit.component';
+import { VendordebitComponent } from '../modules/vendordebit/vendordebit.component';
+import { VendorpaymentagingComponent } from '../modules/vendorpaymentaging/vendorpaymentaging.component';
 
 @NgModule({
   declarations: [
     VendordashComponent,
-    DefaultVendorComponent
+    DefaultVendorComponent,
+    VendorprofileComponent,
+    VendorRFQComponent,
+    VendorcreditComponent,
+    VendordebitComponent,
+    VendorpaymentagingComponent
   ],
   imports: [
     CommonModule,

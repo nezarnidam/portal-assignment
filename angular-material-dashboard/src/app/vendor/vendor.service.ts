@@ -38,12 +38,46 @@ export class VendorService {
     return this.http.post<any>(
       'api/vendorSignout', {
 
-    }
-    );
+    });
   }
 
 
+  vendorProfile() {
+    return this.http.post<any>(
+      'api/vendorProfile', {
 
+    });
+  }
+  vendorProfileedit(data: any) {
+    //  console.log("here   " + data);
+    return this.http.post<any>(
+      'api/vendorProfileedit', {
+      data
+    });
+  }
+
+  ///vendorRFQ
+  vendorRFQ() {
+    return this.http.post<any>(
+      'api/vendorRFQ', {
+    });
+  }
+
+  vendorCredit() {
+    return this.http.post<any>(
+      'api/vendorCredit', {
+    });
+  }
+  vendorDebit() {
+    return this.http.post<any>(
+      'api/vendorDebit', {
+    });
+  }
+  vendorPaymentaging() {
+    return this.http.post<any>(
+      'api/vendorPaymentaging', {
+    });
+  }
 
 }
 

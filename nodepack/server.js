@@ -754,11 +754,11 @@ app.post('/vendorLogin', (req, res) => {
     password = req.body.password;
     let prom = vendorlogin(vendor, password);
     prom.then((dat) => {
-        console.log(vendor);
-        console.log(dat);
+        // console.log(vendor);
+        // console.log(dat);
         if (dat.RESULT == 'S') {
             global.vendorid = vendor;
-            console.log(vendor);
+            // console.log(vendor);
         }
         res.send(dat);
     });
@@ -768,7 +768,7 @@ app.post('/vendorLogin', (req, res) => {
 
 //GET VENDOR ID
 app.post('/getVendorid', (req, res) => {
-    console.log("id -- " + vendorid);
+    // console.log("id -- " + vendorid);
     res.send({ vendor_id: vendorid });
 })
 
@@ -785,10 +785,345 @@ app.post('/vendorLoggedin', (req, res) => {
 
 //VENDOR SIGN OUT
 
-
 app.post('/vendorSignout', (req, res) => {
     vendorid = -1;
     res.send({ status: 'successfully logged out' });
+})
+
+//VENDOR PROFILE VIEW 
+
+const vendorProfile_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDORPROFILENZ';
+const vendorProfile_xml = (vendor) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_VENDOR_PROFILE_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <VENDORID>${vendor}</VENDORID>
+    </ns0:ZBAPI_VENDOR_PROFILE_NZ>`;
+    return xml;
+}
+
+const vendorProfile = async (vendor) => {
+    let resultData;
+    let ret;
+    const { response } = await soapRequest({ url: vendorProfile_url, headers: sampleHeaders, xml: vendorProfile_xml(vendor), timeout: 10000 }); // Optional timeout parameter(milliseconds)
+    const { headers, body, statusCode } = response;
+    resultData = response.body.IT_DET.item;
+    ret = response.body.RETURN;
+    return [resultData, ret];
+    // if(resData.RETURN.TYPE=='E')
+
+}
+
+app.post('/vendorProfile', (req, res) => {
+    const vendor = vendorid;
+    // console.log('vendor-' + vendor);
+    let prom = vendorProfile(vendor);
+    prom.then(([resData, ret]) => {
+        //  if(ret.TYPE!='E'){
+        //  }
+        // console.log(resData);
+        res.send(resData);
+    });
+})
+
+
+//VENDOR PROFILE EDIT
+
+const vendorProfileedit_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDORPROFILEEDITNZ';
+const vendorProfileedit_xml = (vendor) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_VENDOR_PROFILE_EDIT_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <CITY>${vendor.city}</CITY>
+       <COUNTRY>${vendor.country}</COUNTRY>
+       <DISTRICT>${vendor.district}</DISTRICT>
+       <FAXNUMBER></FAXNUMBER>
+       <FIRSTNAME>${vendor.fname}</FIRSTNAME>
+       <LASTNAME>${vendor.sname}</LASTNAME>
+       <PINCODE>${vendor.postcode}</PINCODE>
+       <STREET>${vendor.street}</STREET>
+       <TELEPHONE>${vendor.telephone}</TELEPHONE>
+       <TITLE></TITLE>
+       <VENDORID>${vendor.ID}</VENDORID>
+    </ns0:ZBAPI_VENDOR_PROFILE_EDIT_NZ>`
+    return xml;
+}
+
+const vendorProfileedit = async (vendor) => {
+    const { response } = await soapRequest({ url: vendorProfileedit_url, headers: sampleHeaders, xml: vendorProfileedit_xml(vendor), timeout: 10000 });
+    const { headers, body, statusCode } = response;
+    resData = body.RETURN.TYPE;
+    return resData;
+}
+
+app.post('/vendorProfileedit', (req, res) => {
+    vendor = req.body.data;
+    // let vendor = req.body.DATA;
+    // console.log("vendor data collected " + vendor);
+    let prom = vendorProfileedit(vendor);
+    prom.then(data => {
+        if (data == 'S') {
+            res.send({ edit_status: 'Successfully Updated' });
+        }
+        else {
+            res.send({ edit_status: 'Update unsuccessful' });
+        }
+    });
+})
+
+//VENDOR RFQ
+
+const vendorRFQ_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDORRFQNZ';
+const vendorRFQ_xml = (vendor) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_VENDOR_RFQ_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <VENDORID>10036</VENDORID>
+    </ns0:ZBAPI_VENDOR_RFQ_NZ>`;
+    return xml;
+}
+
+const vendorRFQ = async (vendor) => {
+    let resData, ret;
+
+    try {
+        const { response } = await soapRequest({ url: vendorRFQ_url, headers: sampleHeaders, xml: vendorRFQ_xml(vendor), timeout: 10000 }); // Optional timeout parameter(milliseconds)
+        const { headers, body, statusCode } = response;
+        resData = body;
+        const rfq_head = resData.IT_HEAD.item;
+        const rfq_item = resData.IT_ITEM.item;
+        ret = 'S';
+        return [rfq_head, rfq_item, ret];
+    }
+    catch (err) {
+        ret = 'E';
+        return ['', '', ret];
+    }
+}
+
+app.post('/vendorRFQ', (req, res) => {
+
+    // cid = req.body.customer_id;
+    // cid = customerid;
+    vendor = vendorid;
+    let prom = vendorRFQ(vendor);
+    let arr = [];
+    // console.log("inside");
+    prom.then(([rfq_head, rfq_item, ret]) => {
+        if (ret === 'S') {
+            rfq_head.forEach((elm, index) => {
+                let obj = `{ 
+                    "DOC_NUMBER": "${elm.DOC_NUMBER}",
+                    "CO_CODE": "${elm.CO_CODE}",
+                    "CREATED_ON": "${elm.CREATED_ON}",
+                    "CREATED_BY": "${elm.CREATED_BY}",
+                    "CURRENCY": "${elm.CURRENCY}", 
+                    "DOC_ITEM": "${rfq_item[index].DOC_ITEM}",
+                    "SHORT_TEXT": "${rfq_item[index].SHORT_TEXT}",
+                    "MATERIAL": "${rfq_item[index].MATERIAL}",
+                    "PLANT": "${rfq_item[index].PLANT}",
+                    "QUANTITY": "${rfq_item[index].QUANTITY}",
+                    "NET_PRICE": "${rfq_item[index].NET_PRICE}"
+                    }`;
+                // console.log(obj);
+                arr.push(JSON.parse(obj));
+            })
+            //console.log("hu" + arr);
+            res.status(200).send({ rfq_data: arr });
+        }
+        else {
+            res.status(401).send("No rfq data found");
+        }
+    });
+})
+
+//VENDOR CREDIT
+
+const vendorCredit_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDORCREDITNZ';
+const vendorCredit_xml = (vid) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_VENDOR_CREDIT_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <VENDORID>10067</VENDORID>
+    </ns0:ZBAPI_VENDOR_CREDIT_NZ>`;
+    return xml;
+}
+
+const vendorCredit = async (vid) => {
+    let resData;
+    const { response } = await soapRequest({ url: vendorCredit_url, headers: sampleHeaders, xml: vendorCredit_xml(vid), timeout: 10000 }); // Optional timeout parameter(milliseconds)
+    const { headers, body, statusCode } = response;
+
+    resData = body;
+    try {
+        resData = body.IT_TABLE.item;
+        if (resData.length < 1) {
+            ret = 'E';
+        }
+        else {
+            ret = 'S';
+        }
+    }
+    catch (err) {
+        ret = 'E';
+    }
+
+    return [resData, ret];
+};
+
+app.post('/vendorCredit', (req, res) => {
+
+    vid = vendorid;
+    let prom = vendorCredit(vid);
+    let arr = [];
+    // console.log("works");
+    prom.then(([dat, ret]) => {
+        if (ret === 'S') {
+            // console.log("inside if")
+            dat.forEach((elm) => {
+                let obj = `{ 
+                       "MANDT": "${elm.MANDT}",
+                       "BUKRS": "${elm.BUKRS}",
+                       "GJAHR": "${elm.GJAHR}", 
+                       "BELNR": "${elm.BELNR}",
+                       "BUDAT": "${elm.BUDAT}",
+                       "BLDAT": "${elm.BLDAT}",
+                       "WAERS": "${elm.WAERS}",
+                       "DMBTR": "${elm.DMBTR}",
+                       "ZFBDT": "${elm.ZFBDT}"
+                     }`;
+                arr.push(JSON.parse(obj));
+            })
+            res.status(200).send({ credit_data: arr });
+        }
+        else {
+            res.status(401).send("No Credit data available");
+        }
+    });
+})
+
+
+//VENDOR DEBIT
+
+const vendorDebit_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDORDEBITNZ';
+const vendorDebit_xml = (vendor) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_VENDOR_DEBIT_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <VENDORID>10067</VENDORID>
+    </ns0:ZBAPI_VENDOR_DEBIT_NZ>`;
+    return xml;
+}
+const vendorDebit = async (vendor) => {
+    let resData;
+    const { response } = await soapRequest({ url: vendorDebit_url, headers: sampleHeaders, xml: vendorDebit_xml(vendor), timeout: 10000 }); // Optional timeout parameter(milliseconds)
+    const { headers, body, statusCode } = response;
+
+    resData = body;
+    try {
+        resData = body.IT_TABLE.item;
+        if (resData.length < 1) {
+            ret = 'E';
+        }
+        else {
+            ret = 'S';
+        }
+    }
+    catch (err) {
+        ret = 'E';
+    }
+
+    return [resData, ret];
+};
+
+app.post('/vendorDebit', (req, res) => {
+
+    vendor = vendorid;
+    let prom = vendorDebit(vendor);
+    let arr = [];
+    // console.log("works");
+    prom.then(([dat, ret]) => {
+        if (ret === 'S') {
+            // console.log("inside if")
+            dat.forEach((elm) => {
+                let obj = `{ 
+                       "MANDT": "${elm.MANDT}",
+                       "BUKRS": "${elm.BUKRS}",
+                       "GJAHR": "${elm.GJAHR}", 
+                       "BELNR": "${elm.BELNR}",
+                       "BUDAT": "${elm.BUDAT}",
+                       "BLDAT": "${elm.BLDAT}",
+                       "WAERS": "${elm.WAERS}",
+                       "DMBTR": "${elm.DMBTR}",
+                       "ZFBDT": "${elm.ZFBDT}"
+                     }`;
+                arr.push(JSON.parse(obj));
+            })
+            res.status(200).send({ debit_data: arr });
+        }
+        else {
+            res.status(401).send("No debit data available");
+        }
+    });
+})
+
+//VENDOR PAYMENT AGING
+
+const vendorPaymentaging_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDORPAYMENTAGINGNZ';
+const vendorPaymentaging_xml = (vendor) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_VENDOR_PAY_AGE_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <VENDORID>10036</VENDORID>
+    </ns0:ZBAPI_VENDOR_PAY_AGE_NZ>`;
+    return xml;
+}
+vendorPaymentaging = async (vendor) => {
+    let resData;
+    const { response } = await soapRequest({ url: vendorPaymentaging_url, headers: sampleHeaders, xml: vendorPaymentaging_xml(vendor), timeout: 10000 }); // Optional timeout parameter(milliseconds)
+    const { headers, body, statusCode } = response;
+
+    resData = body;
+    try {
+        resData = body.IT_FINAL.item;
+        if (resData.length < 1) {
+            ret = 'E';
+        }
+        else {
+            ret = 'S';
+        }
+    }
+    catch (err) {
+        ret = 'E';
+    }
+
+    return [resData, ret];
+}
+
+
+app.post('/vendorPaymentaging', (req, res) => {
+
+    vendor = vendorid;
+    let prom = vendorPaymentaging(vendor);
+    let arr = [];
+    // console.log("works");
+    prom.then(([dat, ret]) => {
+        if (ret === 'S') {
+            // console.log("inside if")
+            dat.forEach((elm) => {
+                let obj = `{ 
+                       "COMP_CODE": "${elm.COMP_CODE}",
+                       "FISC_YEAR": "${elm.FISC_YEAR}",
+                       "DOC_NO": "${elm.DOC_NO}", 
+                       "ITEM_NUM": "${elm.ITEM_NUM}",
+                       "PSTNG_DATE": "${elm.PSTNG_DATE}",
+                       "DOC_DATE": "${elm.DOC_DATE}",
+                       "CURRENCY": "${elm.CURRENCY}",
+                       "LC_AMOUNT": "${elm.LC_AMOUNT}",
+                       "BLINE_DATE": "${elm.BLINE_DATE}"
+                     }`;
+                arr.push(JSON.parse(obj));
+            })
+            res.status(200).send({ paymentaging_data: arr });
+        }
+        else {
+            res.status(401).send("No data available");
+        }
+    });
 })
 
 
