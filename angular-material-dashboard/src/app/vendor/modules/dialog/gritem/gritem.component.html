@@ -1,0 +1,53 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="MAT_DOC">
+        <th mat-header-cell *matHeaderCellDef> MAT_DOC </th>
+        <td mat-cell *matCellDef="let element"> {{element.MAT_DOC}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="MATDOC_ITM">
+        <th mat-header-cell *matHeaderCellDef> MATDOC_ITM </th>
+        <td mat-cell *matCellDef="let element"> {{element.MATDOC_ITM}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="MATERIAL">
+        <th mat-header-cell *matHeaderCellDef> MATERIAL </th>
+        <td mat-cell *matCellDef="let element"> {{element.MATERIAL}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="PLANT">
+        <th mat-header-cell *matHeaderCellDef> PLANT </th>
+        <td mat-cell *matCellDef="let element"> {{element.PLANT}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ENTRY_QNT">
+        <th mat-header-cell *matHeaderCellDef> ENTRY_QNT </th>
+        <td mat-cell *matCellDef="let element"> {{element.ENTRY_QNT}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="PO_NUMBER">
+        <th mat-header-cell *matHeaderCellDef> PO_NUMBER </th>
+        <td mat-cell *matCellDef="let element"> {{element.PO_NUMBER}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="PO_ITEM">
+        <th mat-header-cell *matHeaderCellDef> PO_ITEM </th>
+        <td mat-cell *matCellDef="let element"> {{element.PO_ITEM}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="AMOUNT_LC">
+        <th mat-header-cell *matHeaderCellDef> AMOUNT_LC </th>
+        <td mat-cell *matCellDef="let element"> {{element.AMOUNT_LC}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

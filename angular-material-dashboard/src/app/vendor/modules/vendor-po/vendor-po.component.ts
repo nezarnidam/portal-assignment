@@ -1,48 +1,43 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { VendorService } from '../../vendor.service';
-import { RFQitemComponent } from '../dialog/rfqitem/rfqitem.component';
+import { POitemComponent } from '../dialog/poitem/poitem.component';
 
 @Component({
-  selector: 'app-vendor-rfq',
-  templateUrl: './vendor-rfq.component.html',
-  styleUrls: ['./vendor-rfq.component.scss']
+  selector: 'app-vendor-po',
+  templateUrl: './vendor-po.component.html',
+  styleUrls: ['./vendor-po.component.scss']
 })
-export class VendorRFQComponent implements OnInit {
-
-  RFQdata: any = [];
-  Head: any = [];
-  Item: any = [];
+export class VendorPOComponent implements OnInit {
+  Headdata: any = [];
+  Itemdata: any = [];
   selected: any = [];
   constructor(private vendorservice: VendorService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.vendorservice.vendorRFQ().subscribe(
+    this.vendorservice.vendorPO().subscribe(
       res => {
-        // this.RFQdata = res.rfq_data;
-        this.Head = res.head;
-        this.Item = res.item;
+        this.Headdata = res.head_data;
+        this.Itemdata = res.item_data;
       },
       error => {
         console.log(error);
       }
     )
   }
-
   onClick(value) {
     this.selected = [];
     console.log("clicked-----" + value);
-    this.Item.forEach(element => {
-      if (element.DOC_NUMBER == value) {
+    this.Itemdata.forEach(element => {
+      if (element.PO_NUMBER == value) {
         // this.selected += element;
         this.selected.push(element);
       }
     });
-    this.dialog.open(RFQitemComponent, {
+    this.dialog.open(POitemComponent, {
       width: '1000px',
       data: { item: this.selected, context: value }
     });
   }
-
 
 }

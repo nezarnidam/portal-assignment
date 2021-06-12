@@ -1,40 +1,16 @@
-<!-- {{Inquiry[0].DOC_NUMBER}} -->
-
 <div class="a">
-    <h2>RFQ</h2>
-    <div class="cardholder" *ngFor="let card of RFQdata; index as i">
+    <h2>Request for Quotation</h2>
+    <div class="cardholder" *ngFor="let card of Head; index as i">
         <div class="card" id="card{{i}}">
-            <!-- <p>SOLD TO{{card.SOLD_TO}}</p> -->
-            <div class="cardhead">
-                <h3>RFQ Header</h3>
-                <!-- <p>DOCUMENT NUMBER : {{card.DOC_NUMBER}} </p>
-                <p>REC DATE : {{card.REC_DATE}}</p>
-                <p>REC TIME : {{card.REC_TIME}}</p>
-                <p>CREATED BY : {{card.CREATED_BY}}</p> -->
-                <p>DOC NUMBER : {{card.DOC_NUMBER}}</p>
-                <P>COMPANY CODE : {{card.CO_CODE}}</P>
-                <P>CREATED ON : {{card.CREATED_BY}}</P>
-                <P>CREATED BY : {{card.CREATED_ON}}</P>
-                <P>CURRENCY : {{card.CURRENCY}}</P>
 
-            </div>
-            <mat-divider></mat-divider>
-            <div class="carditem">
-                <h3>RFQ Item</h3>
-                <!-- 
-                <p>MATL GROUP : {{card.MATL_GROUP}}</p>
-                <p>ITM NUMBER : {{card.ITM_NUMBER}}</p>
-                
-                <p>REQ QTY : {{card.REQ_QTY}}</p>
-                
-                <p>NET WEIGHT : {{card.NET_WEIGHT}}</p> -->
+            <div class="cardhead" (click)="onClick(card.DOC_NUMBER)">
+                <!-- <h3>Goods head</h3> -->
+                <p>DOC_NUMBER : {{card.DOC_NUMBER}}</p>
+                <P>CO_CODE : {{card.CO_CODE}}</P>
+                <P>CREATED_ON : {{card.CREATED_ON}}</P>
+                <P>CREATED_BY : {{card.CREATED_BY}}</P>
+                <p>CURRENCY :{{card.CURRENCY}}</p>
 
-                <P>DOC ITEM : {{card.DOC_ITEM}}</P>
-                <p>SHORT TEXT : {{card.SHORT_TEXT}}</p>
-                <p>MATERIAL : {{card.MATERIAL}}</p>
-                <P>PLANT : {{card.PLANT}}</P>
-                <p>QUANTITY : {{card.QUANTITY}}</p>
-                <p>NET PRICE : {{card.NET_PRICE}}</p>
             </div>
         </div>
     </div>

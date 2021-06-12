@@ -26,6 +26,7 @@ import { VendorloginComponent } from './vendor/vendorlogin/vendorlogin.component
 import { VendordashModule } from './vendor/vendordash/vendordash.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,14 @@ import { VendordashModule } from './vendor/vendordash/vendordash.module';
     CustomerloginComponent,
 
     VendorloginComponent,
+
+
+
+
+
+
+
+
 
 
 

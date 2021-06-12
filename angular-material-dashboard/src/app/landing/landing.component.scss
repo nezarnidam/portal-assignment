@@ -13,6 +13,9 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
+h2{
+    text-align: center;
+}
 .container{
     position: relative;
     width: 1100px;
@@ -44,7 +47,10 @@
 .container .card:hover{
 //    height: 450px;
    height: 250px;
-    background-color: rgb(195, 204, 204);
+   cursor: pointer;
+    // background-color: rgb(195, 204, 204);
+    // color: #e1e7eb;
+    // background-color: rgb(49, 49, 49);  
 }
 // .container .card .imgbx{
 //     position: relative;
@@ -66,7 +72,7 @@
     margin-top: -140px;
     padding: 10px 15px;
     text-align: center;
-    color: #111;
+    // color: #111;
     visibility: hidden;
     opacity: 0;
     transition:  ease-in-out; 
@@ -83,6 +89,7 @@
 
 
 }
+
 
 button{
     width: 200px;

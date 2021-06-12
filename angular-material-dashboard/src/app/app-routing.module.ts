@@ -22,6 +22,8 @@ import { VendorRFQComponent } from './vendor/modules/vendor-rfq/vendor-rfq.compo
 import { VendorcreditComponent } from './vendor/modules/vendorcredit/vendorcredit.component';
 import { VendordebitComponent } from './vendor/modules/vendordebit/vendordebit.component';
 import { VendorpaymentagingComponent } from './vendor/modules/vendorpaymentaging/vendorpaymentaging.component';
+import { VendorPOComponent } from './vendor/modules/vendor-po/vendor-po.component';
+import { VendorGoodsreceiptComponent } from './vendor/modules/vendor-goodsreceipt/vendor-goodsreceipt.component';
 
 const routes: Routes = [{
   path: '',
@@ -97,6 +99,15 @@ const routes: Routes = [{
     {
       path: 'RFQ',
       component: VendorRFQComponent
+    },
+    {
+      path: 'PO',
+      component: VendorPOComponent
+    },
+    {
+      path: 'goodsreceipt',
+      component: VendorGoodsreceiptComponent
+
     },
     {
       path: 'credit',

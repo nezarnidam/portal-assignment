@@ -1,0 +1,16 @@
+<div class="a">
+    <h2>Purchase order</h2>
+    <div class="cardholder" *ngFor="let card of Headdata; index as i">
+        <div class="card" id="card{{i}}">
+
+            <div class="cardhead" (click)="onClick(card.PO_NUMBER)">
+                <!-- <h3>Goods head</h3> -->
+                <p>PO_NUMBER : {{card.PO_NUMBER}}</p>
+                <P>CREATED_ON : {{card.CREATED_ON}}</P>
+                <P>CREATED_BY : {{card.CREATED_BY}}</P>
+                <P>CURRENCY : {{card.CURRENCY}}</P>
+
+            </div>
+        </div>
+    </div>
+</div>

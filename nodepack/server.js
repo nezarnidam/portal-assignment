@@ -303,30 +303,37 @@ app.post('/customerInquiry', (req, res) => {
     // cid = customerid;
     cid = 18;
     let prom = custInq_res(cid);
-    let arr = [];
-
+    let Head = [];
+    let Item = [];
     prom.then(([inq_head, inq_item, ret]) => {
         if (ret === 'S') {
             inq_head.forEach((elm, index) => {
                 let obj = `{ 
-                       "SOLD_TO": "${elm.SOLD_TO}",
-                       "DOC_NUMBER": "${elm.DOC_NUMBER}",
-                       "REC_DATE": "${elm.REC_DATE}",
-                       "REC_TIME": "${elm.REC_TIME}", 
-                       "CREATED_BY": "${elm.CREATED_BY}",
-                       "MATERIAL": "${inq_item[index].MATERIAL}",
-                       "MATL_GROUP": "${inq_item[index].MATL_GROUP}",
-                       "ITM_NUMBER": "${inq_item[index].ITM_NUMBER}",
-                       "SHORT_TEXT": "${inq_item[index].SHORT_TEXT}",
-                       "REQ_QTY": "${inq_item[index].REQ_QTY}",
-                       "NET_PRICE": "${inq_item[index].NET_PRICE}",
-                       "NET_WEIGHT": "${inq_item[index].NET_WEIGHT}"
-                     }`;
+                    "DOC_NUMBER": "${elm.DOC_NUMBER}",
+                    "SOLD_TO": "${elm.SOLD_TO}",
+                    "REC_DATE": "${elm.REC_DATE}",
+                    "REC_TIME": "${elm.REC_TIME}", 
+                    "CREATED_BY": "${elm.CREATED_BY}"
+                }`;
                 // console.log(obj);
-                arr.push(JSON.parse(obj));
+                Head.push(JSON.parse(obj));
+            })
+            inq_item.forEach((elm) => {
+                let obj = `{
+                    "DOC_NUMBER": "${elm.DOC_NUMBER}",
+                    "MATERIAL": "${elm.MATERIAL}",
+                    "MATL_GROUP": "${elm.MATL_GROUP}",
+                    "ITM_NUMBER": "${elm.ITM_NUMBER}",
+                    "SHORT_TEXT": "${elm.SHORT_TEXT}",
+                    "REQ_QTY": "${elm.REQ_QTY}",
+                    "NET_PRICE": "${elm.NET_PRICE}",
+                    "NET_WEIGHT": "${elm.NET_WEIGHT}"
+                }`
+                Item.push(JSON.parse(obj));
+
             })
             //console.log("hu" + arr);
-            res.status(200).send({ inquiry_data: arr });
+            res.status(200).send({ head: Head, item: Item });
         }
         else {
             res.status(401).send("No inquiry data found");
@@ -430,7 +437,8 @@ app.post('/customerDelivery', (req, res) => {
     // cid = req.body.customer_id;
     cid = customerid;
     let prom = custDeliv_res(cid);
-    let arr = [];
+    let Head = [];
+    let Item = [];
 
     prom.then(([deliv_head, deliv_item, ret]) => {
         if (ret === 'S') {
@@ -444,16 +452,25 @@ app.post('/customerDelivery', (req, res) => {
                        "DELIVERY_DATE": "${elm.LFDAT}",
                        "SHIPPING_POINT": "${elm.VSTEL}",
                        "PICKING_DATE": "${elm.KODAT}",
-                       "UNLOADING_POINT": "${elm.ABLAD}",
-                       "DELIVERY_ITEM": "${deliv_item[index].POSNR}",
-                       "MATERIAL_NO": "${deliv_item[index].MATNR}",
-                       "MATERIAL_ENTERED": "${deliv_item[index].MATWA}",
-                       "MATERIAL_GROUP": "${deliv_item[index].MATKL}",
-                       "DELIVERY_QTY": "${deliv_item[index].LFIMG}"
+                       "UNLOADING_POINT": "${elm.ABLAD}"
                      }`;
-                arr.push(JSON.parse(obj));
+                Head.push(JSON.parse(obj));
             })
-            res.status(200).send({ delivery_data: arr });
+
+            deliv_item.forEach((elm) => {
+                let obj = `{
+                    "DOC_NUMBER": "${elm.VBELN}",
+                    "DELIVERY_ITEM": "${elm.POSNR}",
+                    "MATERIAL_NO": "${elm.MATNR}",
+                    "MATERIAL_ENTERED": "${elm.MATWA}",
+                    "SHORT_TEXT": "${elm.ARKTX}",
+                    "DELIVERY_QTY": "${elm.LFIMG}"
+                }`
+                Item.push(JSON.parse(obj));
+            })
+
+            res.status(200).send({ head: Head, item: Item });
+
         }
         else {
             res.status(401).send("No delivery data available");
@@ -904,7 +921,8 @@ app.post('/vendorRFQ', (req, res) => {
     // cid = customerid;
     vendor = vendorid;
     let prom = vendorRFQ(vendor);
-    let arr = [];
+    let Head = [];
+    let Item = [];
     // console.log("inside");
     prom.then(([rfq_head, rfq_item, ret]) => {
         if (ret === 'S') {
@@ -914,25 +932,170 @@ app.post('/vendorRFQ', (req, res) => {
                     "CO_CODE": "${elm.CO_CODE}",
                     "CREATED_ON": "${elm.CREATED_ON}",
                     "CREATED_BY": "${elm.CREATED_BY}",
-                    "CURRENCY": "${elm.CURRENCY}", 
-                    "DOC_ITEM": "${rfq_item[index].DOC_ITEM}",
-                    "SHORT_TEXT": "${rfq_item[index].SHORT_TEXT}",
-                    "MATERIAL": "${rfq_item[index].MATERIAL}",
-                    "PLANT": "${rfq_item[index].PLANT}",
-                    "QUANTITY": "${rfq_item[index].QUANTITY}",
-                    "NET_PRICE": "${rfq_item[index].NET_PRICE}"
+                    "CURRENCY": "${elm.CURRENCY}"
                     }`;
                 // console.log(obj);
-                arr.push(JSON.parse(obj));
+                Head.push(JSON.parse(obj));
+            })
+
+            rfq_item.forEach((elm) => {
+                let obj = `{
+                    "DOC_NUMBER": "${elm.DOC_NUMBER}",
+                    "DOC_ITEM": "${elm.DOC_ITEM}",
+                    "SHORT_TEXT": "${elm.SHORT_TEXT}",
+                    "MATERIAL": "${elm.MATERIAL}",
+                    "PLANT": "${elm.PLANT}",
+                    "QUANTITY": "${elm.QUANTITY}",
+                    "NET_PRICE": "${elm.NET_PRICE}"
+                }`
+                Item.push(JSON.parse(obj));
             })
             //console.log("hu" + arr);
-            res.status(200).send({ rfq_data: arr });
+            res.status(200).send({ head: Head, item: Item });
         }
         else {
             res.status(401).send("No rfq data found");
         }
     });
 })
+
+// VENDOR PO
+
+const vendorPO_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDORPONZ';
+const vendorPO_xml = (vendor) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_VENDOR_PO_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <VENDORID>10036</VENDORID>
+    </ns0:ZBAPI_VENDOR_PO_NZ>`;
+    return xml;
+}
+const vendorPO = async (vendor) => {
+    let data, ret;
+    try {
+        const { response } = await soapRequest({ url: vendorPO_url, headers: sampleHeaders, xml: vendorPO_xml(vendor), timeout: 10000 });
+        const { headers, body, statusCode } = response;
+        data = body;
+        const head = data.IT_HEAD.item;
+        const item = data.IT_ITEM.item;
+        ret = 'S';
+        return [head, item, ret];
+
+    }
+    catch (err) {
+        ret = 'E';
+        return ['', '', ret];
+    }
+}
+
+app.post('/vendorPO', (req, res) => {
+    vendor = vendorid;
+
+    let Headarr = [];
+    let Itemarr = [];
+    let prom = vendorPO(vendor);
+    prom.then(([head, item, ret]) => {
+        if (ret == 'S') {
+            head.forEach((elm) => {
+                let obj = `{
+                    "PO_NUMBER": "${elm.PO_NUMBER}",
+                    "CREATED_ON": "${elm.CREATED_ON}",
+                    "CREATED_BY": "${elm.CREATED_BY}",
+                    "CURRENCY": "${elm.CURRENCY}"
+                }`
+                Headarr.push(JSON.parse(obj));
+            })
+            item.forEach((elm) => {
+                let obj = `{
+                    "PO_NUMBER": "${elm.PO_NUMBER}",
+                    "SHORT_TEXT": "${elm.SHORT_TEXT}",
+                    "PLANT": "${elm.PLANT}",
+                    "QUANTITY": "${elm.QUANTITY}",
+                    "NET_PRICE": "${elm.NET_PRICE}"
+                }`
+                Itemarr.push(JSON.parse(obj));
+            })
+            res.status(200).send({ head_data: Headarr, item_data: Itemarr });
+        }
+        else {
+            res.status(401).send("No PO data found");
+        }
+    });
+})
+
+
+//  VENDOR GOODS RECEIPT
+
+
+
+const vendorGoodsreceipt_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDORGOODSRECEIPTNZ';
+const vendorGoodsreceipt_xml = (vendor) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_VENDOR_GOODS_RECEIPT_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <VENDORID>10036</VENDORID>
+    </ns0:ZBAPI_VENDOR_GOODS_RECEIPT_NZ>`;
+    return xml;
+}
+const vendorGoodsreceipt = async (vendor) => {
+    let data, ret;
+    try {
+        const { response } = await soapRequest({ url: vendorGoodsreceipt_url, headers: sampleHeaders, xml: vendorGoodsreceipt_xml(vendor), timeout: 10000 });
+        const { headers, body, statusCode } = response;
+        data = body;
+        const head = data.IT_HEAD.item;
+        const item = data.IT_ITEM.item;
+        ret = 'S';
+        return [head, item, ret];
+
+    }
+    catch (err) {
+        ret = 'E';
+        return ['', '', ret];
+    }
+}
+
+app.post('/vendorGoodsreceipt', (req, res) => {
+    vendor = vendorid;
+
+    let Headarr = [];
+    let Itemarr = [];
+    let prom = vendorGoodsreceipt(vendor);
+    console.log("in");
+    prom.then(([head, item, ret]) => {
+        if (ret == 'S') {
+            console.log("if");
+            head.forEach((elm) => {
+                let obj = `{
+                    "MAT_DOC": "${elm.MAT_DOC}",
+                    "DOC_YEAR": "${elm.DOC_YEAR}",
+                    "DOC_DATE": "${elm.DOC_DATE}",
+                    "PSTNG_DATE": "${elm.PSTNG_DATE}",
+                    "ENTRY_DATE": "${elm.ENTRY_DATE}",
+                    "ENTRY_TIME": "${elm.ENTRY_TIME}"
+                }`
+                Headarr.push(JSON.parse(obj));
+            })
+            item.forEach((elm) => {
+                let obj = `{
+                    "MAT_DOC": "${elm.MAT_DOC}",
+                    "MATDOC_ITM": "${elm.MATDOC_ITM}",
+                    "MATERIAL": "${elm.MATERIAL}",
+                    "PLANT": "${elm.PLANT}",
+                    "ENTRY_QNT": "${elm.ENTRY_QNT}",
+                    "PO_NUMBER": "${elm.PO_NUMBER}",
+                    "PO_ITEM": "${elm.PO_ITEM}",
+                    "AMOUNT_LC": "${elm.AMOUNT_LC}"
+                }`
+                Itemarr.push(JSON.parse(obj));
+            })
+            res.status(200).send({ Headdata: Headarr, Itemdata: Itemarr });
+        }
+        else {
+            res.status(401).send("No PO data found");
+        }
+    });
+})
+
+
 
 //VENDOR CREDIT
 

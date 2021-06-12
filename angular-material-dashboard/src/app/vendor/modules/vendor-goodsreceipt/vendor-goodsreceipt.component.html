@@ -1,0 +1,17 @@
+<div class="a">
+    <h2>Goods Receipt</h2>
+    <div class="cardholder" *ngFor="let card of head; index as i">
+        <div class="card" id="card{{i}}">
+
+            <div class="cardhead" (click)="onClick(card.MAT_DOC)">
+                <!-- <h3>Goods head</h3> -->
+                <p>MAT_DOC : {{card.MAT_DOC}}</p>
+                <P>DOC_YEAR : {{card.DOC_YEAR}}</P>
+                <P>DOC_DATE : {{card.DOC_DATE}}</P>
+                <P>PSTNG_DATE : {{card.PSTNG_DATE}}</P>
+                <P>ENTRY_DATE : {{card.ENTRY_DATE}}</P>
+                <P>ENTRY_TIME : {{card.ENTRY_TIME}}</P>
+            </div>
+        </div>
+    </div>
+</div>

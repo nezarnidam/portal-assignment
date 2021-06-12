@@ -5,7 +5,7 @@ import { DashboardComponent } from 'src/app/customer/modules/dashboard/dashboard
 import { RouterModule } from '@angular/router';
 import { OverallsalesComponent } from 'src/app/customer/modules/overallsales/overallsales.component';
 import { SharedModule } from 'src/app/customer/shared/shared.module';
-import { MatSidenavModule, MatDividerModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
+import { MatSidenavModule, MatDividerModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule, MatIconModule, MatTableModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { InquiryComponent } from '../../modules/inquiry/inquiry.component';
 import { ProfileComponent } from '../../modules/profile/profile.component';
@@ -21,6 +21,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InquiryitemComponent } from '../../modules/dialog/inquiryitem/inquiryitem.component';
+import { DeliveryitemComponent } from '../../modules/dialog/deliveryitem/deliveryitem.component';
 
 
 @NgModule({
@@ -38,7 +40,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DebitComponent,
     PaymentagingComponent,
     InvoiceComponent,
-    MasterdataComponent
+    MasterdataComponent,
+    InquiryitemComponent,
+    DeliveryitemComponent
+  ],
+  entryComponents: [
+    InquiryitemComponent,
+    DeliveryitemComponent
   ],
   imports: [
     CommonModule,
@@ -50,7 +58,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-
+    MatTableModule,
     ////
     // BrowserModule,
     // AppRoutingModule,

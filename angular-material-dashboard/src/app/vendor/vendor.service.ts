@@ -78,6 +78,13 @@ export class VendorService {
       'api/vendorPaymentaging', {
     });
   }
+  vendorPO() {
+    return this.http.post<any>('api/vendorPO', {});
+  }
+  vendorGoodsreceipt() {
+    return this.http.post<any>('api/vendorGoodsreceipt', {});
+  }
+
 
 }
 

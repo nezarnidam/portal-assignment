@@ -1,11 +1,9 @@
-<!-- {{Inquiry[0].DOC_NUMBER}} -->
-
 <div class="a">
     <h2>Delivery details</h2>
-    <div class="cardholder" *ngFor="let card of deliverydata; index as i">
+    <div class="cardholder" *ngFor="let card of Head; index as i">
         <div class="card" id="card{{i}}">
             <!-- <p>SOLD TO{{card.SOLD_TO}}</p> -->
-            <div class="cardhead">
+            <div class="cardhead" (click)="onClick(card.DOC_NUMBER)">
                 <h3>Delivery Header</h3>
                 <p>DOCUMENT NUMBER : {{card.DOC_NUMBER}} </p>
                 <p>CREATED BY : {{card.CREATED_BY}}</p>
@@ -15,17 +13,6 @@
                 <p>DELIVERY DATE : {{card.DELIVERY_DATE}}</p>
                 <p>SHIPPING POINT : {{card.SHIPPING_POINT}}</p>
                 <p>PICKING DATE : {{card.PICKING_DATE}}</p>
-                <p>UNLOADING POINT : {{card.UNLOADING_POINT}}</p>
-
-            </div>
-            <mat-divider></mat-divider>
-            <div class="carditem">
-                <h3>Delivery Item</h3>
-                <p>DELIVERY ITEM : {{card.DELIVERY_ITEM}}</p>
-                <p>MATERIAL NO : {{card.MATERIAL_NO}}</p>
-                <p>MATERIAL ENTERED : {{card.MATERIAL_ENTERED}}</p>
-                <p>MATERIAL GROUP : {{card.MATERIAL_GROUP}}</p>
-                <p>DELIVERY QTY : {{card.DELIVERY_QTY}}</p>
             </div>
         </div>
     </div>
