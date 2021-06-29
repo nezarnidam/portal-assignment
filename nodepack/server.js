@@ -516,12 +516,15 @@ const custCredit_res = async (cid) => {
 app.post('/customerCredit', (req, res) => {
 
     // cid = req.body.customer_id;
-    cid = customerid;
+    console.log("inside credit");
+    // cid = customerid;
+    cid = 1;
     let prom = custCredit_res(cid);
     let arr = [];
 
     prom.then(([dat, ret]) => {
         if (ret === 'S') {
+            console.log("credit success");
             dat.forEach((elm) => {
                 let obj = `{ 
                        "DOC_NO": "${elm.DOC_NO}",

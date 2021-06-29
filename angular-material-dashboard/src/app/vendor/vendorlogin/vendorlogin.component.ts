@@ -37,8 +37,6 @@ export class VendorloginComponent implements OnInit {
       }
     )
   }
-  home() {
-    this.router.navigate(['/']);
-  }
+
 
 }

@@ -1,27 +1,52 @@
+<!-- <div class="login">
+    <div>
+        <h2>Customer login</h2>
+        <form (ngSubmit)="onSubmit()" name="testForm" ngNativeValidate>
+            <mat-form-field appearance="outline">
+
+                <mat-label>user id</mat-label>
+                <input matInput placeholder="enter user id" required>
+            </mat-form-field> <br>
+
+            <mat-form-field appearance="outline">
+                <mat-label>password</mat-label>
+                <input matInput placeholder="enter password" type="password" required>
+            </mat-form-field> <br>
+
+
+            <button mat-stroked-button color="dark" [disabled]="!testForm.valid">
+                <mat-icon>account_circle</mat-icon>
+                Log in
+            </button>
+        </form>
+    </div>
+</div> -->
+
 <div>
-    <h2>Customer login</h2>
+    <div class="login">
+        <h2>Customer login</h2>
 
-    <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline">
 
-        <mat-label>Customer id</mat-label>
-        <input [(ngModel)]="userid" matInput placeholder="enter customer id">
-    </mat-form-field>
+            <mat-label>Vendor id</mat-label>
+            <input [(ngModel)]="userid" matInput placeholder="enter vendor id">
+        </mat-form-field>
 
-    <mat-form-field appearance="outline">
-        <mat-label>password</mat-label>
-        <input [(ngModel)]="pass" matInput placeholder="enter customer id" type="password">
-    </mat-form-field>
-    <mat-card *ngIf="er" style="background-color: rgb(231, 185, 185); height: 15px; width: 180px;">
-        wrong credentials
-    </mat-card>
-    <button mat-button (click)="login()">
-        <mat-icon>account_circle</mat-icon> Log in
-    </button>
-
-    <button mat-button (click)="home()">
-
-        <mat-icon>home</mat-icon>Home
-    </button>
+        <mat-form-field appearance="outline">
+            <mat-label>password</mat-label>
+            <input [(ngModel)]="pass" matInput placeholder="enter password" type="password">
+        </mat-form-field>
+        <!-- style="background-color: white; color: darkred; height: 15px; width: 180px;" -->
+        <mat-error *ngIf="er">
+            wrong credentials
+        </mat-error>
+        <button mat-button (click)="login()">
+            <mat-icon>account_circle</mat-icon>
+            Log in
+        </button>
 
 
+
+
+    </div>
 </div>

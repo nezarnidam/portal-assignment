@@ -1,117 +1,119 @@
-<header>
-    <mat-card-title> kaar Technologies</mat-card-title>
-</header>
-
 <!-- <p>
-    <mat-toolbar>
-        <span>My Application</span>
-    </mat-toolbar>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h1>Kaar Technologies</h1>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="mat-action-row">
+      <button mat-button [ngClass]="{'active': currentActive === 1}" (click)="scrollTologin()">login</button>
+      <button mat-button [ngClass]="{'active': currentActive === 2}" (click)="scrollToBoard()">Board of
+        Directors</button>
+      <button mat-button [ngClass]="{'active': currentActive === 3}" (click)="scrollToAbout()">About</button>
+    </div>
+  </mat-expansion-panel>
 </p> -->
-<div class="a">
+<div class="mat-action-row-class">
 
-
-    <div class="container">
-
-
-
-        <div class="card" (click)="onCustomerLogin()">
-            <h2 style="   font-family:'Trebuchet MS', 'Lucida Sans Unicode',
-                     'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-                    ">Customer portal</h2>
-
-            <div class="content">
-                <p>By clicking on the button below, you will be navigated to Customer login page</p>
-                <!-- <button mat-button (click)=" onCustomerLogin()">click here</button> -->
-
-
-            </div>
-        </div>
-
-        <div class="card" (click)="onVendorLogin()">
-            <h2 style="   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 
-            'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            ">Vendor portal</h2>
-
-            <div class="content">
-
-                <p>By clicking on the button below, you will be navigated to Vendor login page</p>
-                <!-- <button mat-button (click)="onVendorLogin()">click here</button> -->
-            </div>
-        </div>
-
-        <div class="card" (click)="onCustomerLogin()">
-            <h2 style="   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 
-            'Lucida Sans', Arial, sans-serif;">Employee portal</h2>
-
-            <div class="content">
-
-                <p>By clicking on the button below, you will be navigated to Employee login page</p>
-                <!-- <button mat-button (click)="onCustomerLogin()">click here</button> -->
-            </div>
-        </div>
-
-
-        <!-- <div class="card">
-            <h2 style="   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 
-            'Lucida Sans', Arial, sans-serif;">Maintenance portal</h2>
-
-            <div class="content">
-            
-                <p>By clicking on the button below, you will be navigated to Maintenance login page</p>
-                <button mat-button (click)="onCustomerLogin()">click here</button>
-            </div>
-        </div>
-        <div class="card">
-            <h2 style="   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 
-            'Lucida Sans', Arial, sans-serif;">Shop Floor portal</h2>
- 
-            <div class="content">
-         
-                <p>By clicking on the button below, you will be navigated to Shop floor login page</p>
-                <button mat-button (click)="onCustomerLogin()">click here</button>
-            </div>
-        </div>
-        <div class="card">
-            <h2 style="   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 
-            'Lucida Sans', Arial, sans-serif;">EHSM portal</h2>
-        
-            <div class="content">
-                <p>By clicking on the button below, you will be navigated to EHSM login page</p>
-                <button mat-button (click)="onCustomerLogin()">click here</button>
-            </div>
-        </div> -->
-    </div>
+    <button mat-button [ngClass]="{'active': currentActive === 1}" (click)="scrollTologin()">Login</button>
+    <button mat-button [ngClass]="{'active': currentActive === 2}" (click)="scrollToBoard()">Board of
+        Directors</button>
+    <button mat-button [ngClass]="{'active': currentActive === 3}" (click)="scrollToAbout()">About</button>
 </div>
-<!-- <div class="a">
-    <div class="container">
-        <div>
-            <h2>About us</h2>
-        </div>
-        <div class="about" id="aboutus">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum architecto
-            <a name="aboutus"></a>
-            veritatis culpa
-            molestias nemo illo aliquid! Iure illum mollitia nostrum at? Vitae ea corporis quam quia omnis delectus illo
-            provident?
-            Dolore suscipit facilis perferendis velit ab veniam, doloremque voluptas magni dicta possimus? Qui sint
-            natus quia sapiente aliquid eaque aspernatur debitis ipsam iste, minus, porro accusamus dolor non aliquam
-            nihil!
-            Eos molestias obcaecati reprehenderit a cumque velit error voluptatem nobis sapiente saepe, quibusdam cum,
-            iste temporibus, at dignissimos! Similique sit ex nam illo est facere eum minus quibusdam veritatis amet!
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae sed dolore iusto modi! Atque fugit ipsa
-            maxime aperiam molestiae. Temporibus exercitationem numquam earum dolor sequi illum possimus aperiam
-            repudiandae omnis!
-
-        </div>
-    </div>
-</div> -->
-<footer>
-    <mat-icon>mail</mat-icon>
-    customersupport@kaartech.com
-    <mat-icon>phone</mat-icon>
-    +91 9020920209
-    <div id="copy">
-        <mat-icon>copyright</mat-icon>
-        Kaar Technologies 2021
+<!-- <div class="spacer"></div> -->
+<div class="content" #login id="loginId">
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Portal</mat-label>
+      <mat-select id="select">
+        <mat-option value="red" (click)="onlogin()">Customer</mat-option>
+        <mat-option value="green" (click)="onlogin()">Vendor</mat-option>
+        <mat-option value="blue" (click)="onlogin()">Employee</mat-option>
+      </mat-select>
+    </mat-form-field> -->
+    <router-outlet></router-outlet>
+    <div class="selection">
+        <button mat-button [ngClass]="{'active': componentActive === 1}" (click)="onCustomer()">Customer</button>
+        <button mat-button [ngClass]="{'active': componentActive === 2}" (click)="onVendor()">Vendor</button>
+        <button mat-button [ngClass]="{'active': componentActive === 3}" (click)="onEmployee()">Employee</button>
     </div>
 
-</footer>
+</div>
+<div class="content" #board id="boardId">
+    <h1>Board of Directors</h1>
+    <div class="cards">
+        <div class="card">
+            <img src="../../assets/images/ceo.png" alt="John" style="width:100%">
+            <h3>Maran Nagarajan</h3>
+            <p class="title">Chairman & CEO</p>
+            <!-- <p>Harvard University</p> -->
+            <!-- <p><button>Contact</button></p> -->
+        </div>
+        <div class="card">
+            <img src="../../assets/images/executive director.png" alt="John" style="width:100%">
+            <h3>Ratna Kumar N</h3>
+            <p class="title">Executive Director</p>
+            <!-- <p>Kaar Technologies</p> -->
+            <!-- <p><button>Contact</button></p> -->
+        </div>
+        <div class="card">
+            <img src="../../assets/images/co-founder.png" alt="John" style="width:100%">
+            <h3>M Selvakumaran</h3>
+            <p class="title">Co-founder & Director</p>
+            <!-- <p>Harvard University</p> -->
+            <!-- <p><button>Contact</button></p> -->
+        </div>
+        <div class="card">
+            <img src="../../assets/images/co-founder&director.png" alt="John" style="width:100%">
+            <h3>George Guargian</h3>
+            <p class="title">Co-founder & Director</p>
+            <!-- <p>Harvard University</p> -->
+            <!-- <p><button>Contact</button></p> -->
+        </div>
+        <div class="card">
+            <img src="../../assets/images/Director.png" alt="John" style="width:100%">
+            <h3>Frans Damen</h3>
+            <p class="title">Director</p>
+            <!-- <p>Harvard University</p> -->
+            <!-- <p><button>Contact</button></p> -->
+        </div>
+        <div class="card">
+            <img src="../../assets/images/member.png" alt="John" style="width:100%">
+            <h3>Balakrishnan V</h3>
+            <p class="title">Member of Board, Example</p>
+            <!-- <p>Harvard University</p> -->
+            <!-- <p><button>Contact</button></p> -->
+        </div>
+
+    </div>
+
+</div>
+<div class="spacer"></div>
+<!-- <mat-divider></mat-divider>
+    <div class="spacer"></div> -->
+<!-- <a name="about"></a> -->
+<div class="content" #about id="aboutId">
+
+
+    <!-- <h1>About</h1> -->
+    <img src="../../assets/images/logo.png" alt="logo" style="width: 250px; height: 250px;">
+
+    <div style=" font-size: 20px; font-family: Georgia, 'Times New Roman', Times, serif; width: 60%;">
+
+        Kaar Technologies is a global consulting firm
+        focused at
+        designing,
+        delivering and deploying the
+        finest ideas and SAP expertise to empower companies in achieving new heights of excellence in today’s
+        challenging
+        business landscape. <br>
+        Our combined thrust drawn from the business vision of our leadership team and assimilated SAP capability propels
+        us
+        to
+        partner with our clients in identifying and architecting their business agenda. As a CMMi level 3 company, Kaar
+        believes in being a trusted advisor to clients and fosters long-term working relationships by exceeding customer
+        expectations. <br>
+        Driven by the steadfast pursuit of excellence, Kaar Technologies exudes professionalism and proficiency in all
+        areas
+        of function. Every day we are inspired to impact businesses with original and imaginative approaches and help
+        cultivate tomorrow’s breakthroughs.</div>
+</div>

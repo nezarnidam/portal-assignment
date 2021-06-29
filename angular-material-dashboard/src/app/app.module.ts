@@ -9,21 +9,22 @@ import { DefaultModule } from './customer/layouts/default/default.module';
 import { LandingComponent } from './landing/landing.component';
 import { CustomerloginComponent } from './customer/customerlogin/customerlogin.component';
 import { MatButtonModule } from '@angular/material/button'
-import { MatCardModule, MatDividerModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
-import { HttpClient } from '@angular/common/http';
+import { MatCardModule, MatDividerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatToolbarModule } from '@angular/material';
 import { CustomerAuthService } from './customer/customer-auth.service';
-import { FormsModule, NgForm, NgModel } from '@angular/forms';
-import { ProfileComponent } from './customer/modules/profile/profile.component';
-import { InquiryComponent } from './customer/modules/inquiry/inquiry.component';
-import { SalesComponent } from './customer/modules/sales/sales.component';
-import { DeliveryComponent } from './customer/modules/delivery/delivery.component';
-import { CreditComponent } from './customer/modules/credit/credit.component';
-import { DebitComponent } from './customer/modules/debit/debit.component';
-import { PaymentagingComponent } from './customer/modules/paymentaging/paymentaging.component';
-import { InvoiceComponent } from './customer/modules/invoice/invoice.component';
-import { MasterdataComponent } from './customer/modules/masterdata/masterdata.component';
+import { FormsModule, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { VendorloginComponent } from './vendor/vendorlogin/vendorlogin.component';
 import { VendordashModule } from './vendor/vendordash/vendordash.module';
+// import { HttpClient } from '@angular/common/http';
+// import { ProfileComponent } from './customer/modules/profile/profile.component';
+// import { InquiryComponent } from './customer/modules/inquiry/inquiry.component';
+// import { SalesComponent } from './customer/modules/sales/sales.component';
+// import { DeliveryComponent } from './customer/modules/delivery/delivery.component';
+// import { CreditComponent } from './customer/modules/credit/credit.component';
+// import { DebitComponent } from './customer/modules/debit/debit.component';
+// import { PaymentagingComponent } from './customer/modules/paymentaging/paymentaging.component';
+// import { InvoiceComponent } from './customer/modules/invoice/invoice.component';
+// import { MasterdataComponent } from './customer/modules/masterdata/masterdata.component';
+
 
 
 
@@ -59,7 +60,12 @@ import { VendordashModule } from './vendor/vendordash/vendordash.module';
     MatIconModule,
     MatCardModule,
     FormsModule,
-    VendordashModule
+    VendordashModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [CustomerAuthService],
   bootstrap: [AppComponent]

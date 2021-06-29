@@ -16,11 +16,6 @@ export class CustomerloginComponent implements OnInit {
   er: boolean = false;
 
 
-
-
-
-
-
   constructor(private router: Router, private customerAuthService: CustomerAuthService) { }
 
   ngOnInit() {
@@ -45,12 +40,14 @@ export class CustomerloginComponent implements OnInit {
 
           this.router.navigate(['/customer']);
         } else {
-          this.router.navigate(['/customerlogin']);
+          this.router.navigate(['/']);
           this.er = true;
           console.log('Redirected to login page')
         }
       },
       error => {
+        // this.router.navigate(['customer']);
+        this.er = true;
         console.log(error);
       }
     )

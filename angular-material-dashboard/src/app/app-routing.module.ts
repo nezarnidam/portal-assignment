@@ -27,16 +27,25 @@ import { VendorGoodsreceiptComponent } from './vendor/modules/vendor-goodsreceip
 
 const routes: Routes = [{
   path: '',
-  component: LandingComponent
+  component: LandingComponent,
+  children: [
+    {
+      path: '',
+      component: CustomerloginComponent
+    }, {
+      path: 'vendorlogin',
+      component: VendorloginComponent
+    }
+  ]
 },
-{
-  path: 'customerlogin',
-  component: CustomerloginComponent
-},
-{
-  path: 'vendorlogin',
-  component: VendorloginComponent
-},
+// {
+//   path: 'customerlogin',
+//   component: CustomerloginComponent
+// },
+// {
+//   path: 'vendorlogin',
+//   component: VendorloginComponent
+// },
 {
   path: 'customer',
   component: DefaultComponent,
