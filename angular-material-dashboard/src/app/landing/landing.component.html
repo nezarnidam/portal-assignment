@@ -1,13 +1,25 @@
+<header>
+    <mat-card-title> kaar Technologies</mat-card-title>
+</header>
+
+<!-- <p>
+    <mat-toolbar>
+        <span>My Application</span>
+    </mat-toolbar>
+</p> -->
 <div class="a">
+
 
     <div class="container">
 
-        <div class="card">
+
+
+        <div class="card" (click)="onCustomerLogin()">
             <h2 style="   font-family:'Trebuchet MS', 'Lucida Sans Unicode',
                      'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
                     ">Customer portal</h2>
 
-            <div class="content" (click)="onCustomerLogin()">
+            <div class="content">
                 <p>By clicking on the button below, you will be navigated to Customer login page</p>
                 <!-- <button mat-button (click)=" onCustomerLogin()">click here</button> -->
 
@@ -15,23 +27,23 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card" (click)="onVendorLogin()">
             <h2 style="   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 
             'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             ">Vendor portal</h2>
 
-            <div class="content" (click)="onVendorLogin()">
+            <div class="content">
 
                 <p>By clicking on the button below, you will be navigated to Vendor login page</p>
                 <!-- <button mat-button (click)="onVendorLogin()">click here</button> -->
             </div>
         </div>
 
-        <div class="card">
+        <div class="card" (click)="onCustomerLogin()">
             <h2 style="   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 
             'Lucida Sans', Arial, sans-serif;">Employee portal</h2>
 
-            <div class="content" (click)="onCustomerLogin()">
+            <div class="content">
 
                 <p>By clicking on the button below, you will be navigated to Employee login page</p>
                 <!-- <button mat-button (click)="onCustomerLogin()">click here</button> -->
@@ -68,7 +80,38 @@
                 <button mat-button (click)="onCustomerLogin()">click here</button>
             </div>
         </div> -->
-
-
     </div>
 </div>
+<!-- <div class="a">
+    <div class="container">
+        <div>
+            <h2>About us</h2>
+        </div>
+        <div class="about" id="aboutus">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum architecto
+            <a name="aboutus"></a>
+            veritatis culpa
+            molestias nemo illo aliquid! Iure illum mollitia nostrum at? Vitae ea corporis quam quia omnis delectus illo
+            provident?
+            Dolore suscipit facilis perferendis velit ab veniam, doloremque voluptas magni dicta possimus? Qui sint
+            natus quia sapiente aliquid eaque aspernatur debitis ipsam iste, minus, porro accusamus dolor non aliquam
+            nihil!
+            Eos molestias obcaecati reprehenderit a cumque velit error voluptatem nobis sapiente saepe, quibusdam cum,
+            iste temporibus, at dignissimos! Similique sit ex nam illo est facere eum minus quibusdam veritatis amet!
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae sed dolore iusto modi! Atque fugit ipsa
+            maxime aperiam molestiae. Temporibus exercitationem numquam earum dolor sequi illum possimus aperiam
+            repudiandae omnis!
+
+        </div>
+    </div>
+</div> -->
+<footer>
+    <mat-icon>mail</mat-icon>
+    customersupport@kaartech.com
+    <mat-icon>phone</mat-icon>
+    +91 9020920209
+    <div id="copy">
+        <mat-icon>copyright</mat-icon>
+        Kaar Technologies 2021
+    </div>
+
+</footer>

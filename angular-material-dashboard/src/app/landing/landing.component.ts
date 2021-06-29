@@ -27,4 +27,5 @@ export class LandingComponent implements OnInit {
   onEmployeeLogin() {
     // alert("couldnt connect");
   }
+
 }
