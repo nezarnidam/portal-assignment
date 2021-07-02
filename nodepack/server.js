@@ -159,7 +159,9 @@ const x1 = async (username) => {
 
 app.post('/profileview', (req, res) => {
     // console.log(req.body);   
-    user = req.body.username;
+    // user = req.body.username;
+    user = customerid;
+    // user = 11;
     //pass = req.body.password;
     console.log(user);
     // console.log(pass);  
@@ -517,8 +519,8 @@ app.post('/customerCredit', (req, res) => {
 
     // cid = req.body.customer_id;
     console.log("inside credit");
-    // cid = customerid;
-    cid = 1;
+    cid = customerid;
+    // cid = 11;
     let prom = custCredit_res(cid);
     let arr = [];
 
@@ -585,7 +587,7 @@ app.post('/customerDebit', (req, res) => {
 
     // cid = req.body.customer_id;
     cid = customerid;
-
+    // cid = 11;
     let prom = custDebit_res(cid);
     let arr = [];
 
@@ -651,6 +653,7 @@ app.post('/customerPaymentAging', (req, res) => {
 
     // cid = req.body.customer_id;
     cid = customerid;
+    // cid = 11;
     let prom = custPayag_res(cid);
     let arr = [];
 

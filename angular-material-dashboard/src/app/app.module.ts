@@ -14,6 +14,7 @@ import { CustomerAuthService } from './customer/customer-auth.service';
 import { FormsModule, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { VendorloginComponent } from './vendor/vendorlogin/vendorlogin.component';
 import { VendordashModule } from './vendor/vendordash/vendordash.module';
+import { EmployeeloginComponent } from './employee/employeelogin/employeelogin.component';
 // import { HttpClient } from '@angular/common/http';
 // import { ProfileComponent } from './customer/modules/profile/profile.component';
 // import { InquiryComponent } from './customer/modules/inquiry/inquiry.component';
@@ -35,6 +36,8 @@ import { VendordashModule } from './vendor/vendordash/vendordash.module';
     CustomerloginComponent,
 
     VendorloginComponent,
+
+    EmployeeloginComponent,
 
 
 

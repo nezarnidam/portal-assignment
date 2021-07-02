@@ -24,22 +24,22 @@
 
 <div>
     <div class="login">
-        <h2>Vendor login</h2>
+        <h2>Employee login</h2>
+        <!-- <form ngNativeValidate> -->
         <form [formGroup]="angForm" ngNativevalidate>
-
             <mat-form-field appearance="outline">
 
-                <mat-label>Vendor id</mat-label>
-                <input [(ngModel)]="vendorid" matInput placeholder="enter vendor id" formControlName="vendorid">
+                <mat-label>Employee id</mat-label>
+                <input matInput placeholder="enter employee id" formControlName="empid">
             </mat-form-field>
             <br>
             <mat-form-field appearance="outline">
                 <mat-label>password</mat-label>
-                <input [(ngModel)]="pass" matInput placeholder="enter password" type="password" formControlName="pass">
+                <input matInput placeholder="enter password" type="password" formControlName="pass">
             </mat-form-field>
             <br>
+            <!-- style="background-color: white; color: darkred; height: 15px; width: 180px;" -->
             <mat-error *ngIf="er">
-                <!--style="background-color: rgb(231, 185, 185); height: 15px; width: 180px;"-->
                 wrong credentials
             </mat-error>
             <br>

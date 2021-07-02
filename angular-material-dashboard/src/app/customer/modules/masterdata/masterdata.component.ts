@@ -23,6 +23,7 @@ export class MasterdataComponent implements OnInit {
 
 
   customer_master!: CustMaster[];
+  // customer_master: any = [];
   isData: boolean = false;
   errorMsg: boolean = false;
   constructor(private customerService: CustomerServices) { }
@@ -62,6 +63,7 @@ export class MasterdataComponent implements OnInit {
       (res) => {
         console.log(res);
         let masterData = res;
+        // this.customer_master.push(masterData);
         this.customer_master = masterData;
         console.log(this.customer_master);
         this.isData = true;

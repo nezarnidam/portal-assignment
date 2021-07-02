@@ -3,56 +3,63 @@
     <p>
         <mat-form-field appearance="fill">
             <mat-label>Vendor id</mat-label>
-            <input [(ngModel)]="vendorDetails.ID" matInput disabled>
+            <input [(ngModel)]="vendorDetails.ID" matInput readonly>
         </mat-form-field>
+        <!-- </p>
+    <p> -->
+        <button id="edit" mat-raised-button (click)="OnEdit()">{{btn}}</button>
+
+        <!-- <button mat-button (click)="OnCancel()" [disabled]="!editing">Cancel</button> -->
     </p>
     <p>
         <mat-form-field appearance="fill">
             <mat-label>First name</mat-label>
-            <input [(ngModel)]="vendorDetails.fname" matInput [disabled]="!editing">
+            <input [(ngModel)]="vendorDetails.fname" matInput [readonly]="!editing">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Second name </mat-label>
-            <input [(ngModel)]="vendorDetails.sname" matInput [disabled]="!editing">
+            <input [(ngModel)]="vendorDetails.sname" matInput [readonly]="!editing">
         </mat-form-field>
-    </p>
-    <p>
+        <!-- </p>
+    <p> -->
         <mat-form-field appearance="fill">
             <mat-label>Street </mat-label>
-            <input [(ngModel)]="vendorDetails.street" matInput [disabled]="!editing">
+            <input [(ngModel)]="vendorDetails.street" matInput [readonly]="!editing">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>city </mat-label>
-            <input [(ngModel)]="vendorDetails.city" matInput [disabled]="!editing">
+            <input [(ngModel)]="vendorDetails.city" matInput [readonly]="!editing">
         </mat-form-field>
-    </p>
-    <p>
+        <!-- </p>
+    <p> -->
         <mat-form-field appearance="fill">
             <mat-label>District </mat-label>
-            <input [(ngModel)]="vendorDetails.district" matInput [disabled]="!editing">
+            <input [(ngModel)]="vendorDetails.district" matInput [readonly]="!editing">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Country </mat-label>
-            <input [(ngModel)]="vendorDetails.country" matInput [disabled]="!editing">
+            <input [(ngModel)]="vendorDetails.country" matInput [readonly]="!editing">
         </mat-form-field>
-    </p>
-    <p>
+        <!-- </p>
+    <p> -->
         <mat-form-field appearance="fill">
             <mat-label>Post </mat-label>
-            <input [(ngModel)]="vendorDetails.postcode" matInput [disabled]="!editing">
+            <input [(ngModel)]="vendorDetails.postcode" matInput [readonly]="!editing">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Mobile Number </mat-label>
-            <input [(ngModel)]="vendorDetails.telephone" matInput [disabled]="!editing">
+            <input [(ngModel)]="vendorDetails.telephone" matInput [readonly]="!editing">
         </mat-form-field>
     </p>
-    <p><button mat-button (click)="OnEdit()">{{btn}}</button>
-        <button mat-button [disabled]="!editing" (click)="OnSave()">Save</button>
-        <!-- <button mat-button (click)="OnCancel()" [disabled]="!editing">Cancel</button> -->
+    <p> <button id="save" mat-raised-button [disabled]="!editing" (click)="OnSave()">Save</button>
+        <!-- </p>
+
+    <p>  -->
+        <button id="cancel" mat-raised-button [disabled]="!editing" (click)="OnEdit()">Cancel</button>
     </p>
 
 </div>

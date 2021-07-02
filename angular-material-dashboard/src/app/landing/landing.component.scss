@@ -91,6 +91,7 @@
   }
   .mat-action-row-class{
     //   flex-direction: column;
+    // padding: 3px;
     z-index: 2;
     top: 0px;
     // height: 50px;
@@ -139,4 +140,42 @@ router-outlet{
 h3,h1{
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
+}
+
+footer{
+  // z-index: 2;
+  padding: 10px;
+  text-align: center;
+  // border: solid 1px black;
+  // justify-content: center;
+  // align-items: center;
+  color: white;
+  // position: fixed;
+  height:fit-content;
+  background-color: darkred;
+ span{
+   vertical-align: middle;
+ }
+  a{
+    margin-left: 8px;
+  }
+  img{
+    // align-self:auto;
+    // align-self: baseline;
+    vertical-align: middle;
+ }
+ 
+}
+
+.about{
+  padding: 10px;
+  margin-top: 30px;
+  border-radius: 5px;
+ font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif; 
+  width: 80%; 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  // background-color: blanchedalmond; 
+  // border: solid;
 }

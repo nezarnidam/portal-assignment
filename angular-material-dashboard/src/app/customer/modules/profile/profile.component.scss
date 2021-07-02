@@ -1,10 +1,11 @@
 .view h2{
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     // text-align: center;
+    // color: darkred;
     padding-left: 10px;
   }
 
-  .mat-form-field{
+  mat-form-field{
     padding-left: 10px;
   }
 
@@ -12,4 +13,23 @@
     display: flex;
     flex-direction: column;
    // align-items: center;
+  }
+  button{
+    margin-left: 10px;
+    background-color: darkred;
+    color: white;
+  }
+  button:disabled{
+    visibility:hidden;
+  }
+  #save{
+    background-color: darkgreen;
+  }
+
+  .mat-form-field-appearance-fill  {
+    // color: darkred;
+  }
+  
+  mat-label{
+    color: darkred;
   }

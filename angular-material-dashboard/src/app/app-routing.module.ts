@@ -24,6 +24,7 @@ import { VendordebitComponent } from './vendor/modules/vendordebit/vendordebit.c
 import { VendorpaymentagingComponent } from './vendor/modules/vendorpaymentaging/vendorpaymentaging.component';
 import { VendorPOComponent } from './vendor/modules/vendor-po/vendor-po.component';
 import { VendorGoodsreceiptComponent } from './vendor/modules/vendor-goodsreceipt/vendor-goodsreceipt.component';
+import { EmployeeloginComponent } from './employee/employeelogin/employeelogin.component';
 
 const routes: Routes = [{
   path: '',
@@ -35,6 +36,9 @@ const routes: Routes = [{
     }, {
       path: 'vendorlogin',
       component: VendorloginComponent
+    }, {
+      path: 'employeelogin',
+      component: EmployeeloginComponent
     }
   ]
 },

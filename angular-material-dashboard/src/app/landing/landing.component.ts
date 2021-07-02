@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -10,11 +9,21 @@ export class LandingComponent implements AfterViewInit {
 
 
 
-  // @ViewChild('login', { read: true, static: false }) loginElement: ElementRef;
-  // @ViewChild('board', { read: true, static: false }) boardElement: ElementRef;
-  // @ViewChild('about', { read: true, static: false }) aboutElement: ElementRef;
+  @ViewChild('login', { static: false }) loginElement: ElementRef;
+  @ViewChild('board', { static: false }) boardElement: ElementRef;
+  @ViewChild('about', { static: false }) aboutElement: ElementRef;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    if (this.router.url == '/') {
+      this.componentActive = 1;
+    }
+    if (this.router.url == '/vendorlogin') {
+      this.componentActive = 2;
+    }
+    else if (this.router.url == '/employeelogin') {
+      this.componentActive = 3;
+    }
+  }
 
   public currentActive = 1;
   public loginOffset: Number = null;
@@ -22,16 +31,23 @@ export class LandingComponent implements AfterViewInit {
   public aboutOffset: Number = null;
 
 
-  public componentActive = 1;
+  public componentActive;
 
   ngAfterViewInit() {
-    this.loginOffset = 20;
-    //  this.loginElement.nativeElement.offsetTop;
-    this.boardOffset = 731;
-    // this.boardElement.nativeElement.offsetTop;
-    this.aboutOffset = 1482;
-    //  this.aboutElement.nativeElement.offsetTop;
-    console.log(this.loginOffset + ", " + this.boardOffset + ", " + this.aboutOffset);
+    // this.loginOffset = 20;
+    console.log("inside");
+    this.loginOffset = this.loginElement.nativeElement.offsetTop;
+    // this.boardOffset = 731;
+    this.boardOffset = this.boardElement.nativeElement.offsetTop;
+    // this.aboutOffset = 1482;
+    this.aboutOffset = this.aboutElement.nativeElement.offsetTop;
+    // console.log(this.loginOffset + ", " + this.boardOffset + ", " + this.aboutOffset);
+    // console.log(this.route);
+    // this.router.events.subscribe((url: any) => console.log(url));
+    console.log(this.router.url);  // to print only path eg:"/login"
+
+
+
   }
 
   scrollToElement() {
@@ -40,9 +56,7 @@ export class LandingComponent implements AfterViewInit {
 
   @HostListener('window:scroll', ['$event'])
   checkOffsetTop() {
-    console.log("home " + this.loginOffset);
-    console.log("board " + this.boardOffset);
-    console.log("about " + this.aboutOffset);
+
     if (window.pageYOffset + 200 >= this.loginOffset && window.pageYOffset + 200 < this.boardOffset) { //
       this.currentActive = 1;
       // console.log(window.pageYOffset);
@@ -88,6 +102,7 @@ export class LandingComponent implements AfterViewInit {
   }
 
   onEmployee() {
+    this.router.navigate(['/employeelogin']);
     this.componentActive = 3;
   }
 }

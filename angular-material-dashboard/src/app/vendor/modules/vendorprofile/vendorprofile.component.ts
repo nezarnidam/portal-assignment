@@ -53,6 +53,24 @@ export class VendorprofileComponent implements OnInit {
     } else {
       this.editing = false;
       this.btn = 'Edit';
+      this.vendorservice.vendorProfile().subscribe(
+        res => {
+          this.vendorDetails.ID = res.VENDOR;
+          this.vendorDetails.fname = res.NAME;
+          this.vendorDetails.sname = res.NAME_2;
+          this.vendorDetails.city = res.CITY;
+          this.vendorDetails.postcode = res.POSTL_CODE;
+          this.vendorDetails.street = res.STREET;
+          this.vendorDetails.country = res.COUNTRY;
+          this.vendorDetails.district = res.DISTRICT;
+          this.vendorDetails.telephone = res.TELEPHONE;
+          console.log(this.vendorDetails);
+        },
+        error => {
+          console.log(error);
+        }
+      )
+
     }
 
   }

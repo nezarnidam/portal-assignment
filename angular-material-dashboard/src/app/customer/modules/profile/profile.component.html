@@ -3,56 +3,59 @@
     <p>
         <mat-form-field appearance="fill">
             <mat-label>Customer id</mat-label>
-            <input [(ngModel)]="custid" matInput disabled>
+            <input [(ngModel)]="custid" matInput readonly>
         </mat-form-field>
+        <button mat-button (click)="OnEdit()">{{btn}}</button>
     </p>
     <p>
         <mat-form-field appearance="fill">
             <mat-label>First name</mat-label>
-            <input [(ngModel)]="fname" matInput [disabled]="!editing">
+            <input [(ngModel)]="fname" matInput [readonly]="!editing">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Second name </mat-label>
-            <input [(ngModel)]="sname" matInput [disabled]="!editing">
+            <input [(ngModel)]="sname" matInput [readonly]="!editing">
         </mat-form-field>
-    </p>
-    <p>
+        <!-- </p>
+    <p> -->
         <mat-form-field appearance="fill">
             <mat-label>Street </mat-label>
-            <input [(ngModel)]="street" matInput [disabled]="!editing">
+            <input [(ngModel)]="street" matInput [readonly]="!editing">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>city </mat-label>
-            <input [(ngModel)]="city" matInput [disabled]="!editing">
+            <input [(ngModel)]="city" matInput [readonly]="!editing">
         </mat-form-field>
-    </p>
-    <p>
+        <!-- </p>
+    <p> -->
         <mat-form-field appearance="fill">
             <mat-label>State </mat-label>
-            <input [(ngModel)]="state" matInput [disabled]="!editing">
+            <input [(ngModel)]="state" matInput [readonly]="!editing">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Country </mat-label>
-            <input [(ngModel)]="country" matInput [disabled]="!editing">
+            <input [(ngModel)]="country" matInput [readonly]="!editing">
         </mat-form-field>
-    </p>
-    <p>
+        <!-- </p>
+    <p> -->
         <mat-form-field appearance="fill">
             <mat-label>Post </mat-label>
-            <input [(ngModel)]="post" matInput [disabled]="!editing">
+            <input [(ngModel)]="post" matInput [readonly]="!editing">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Mobile Number </mat-label>
-            <input [(ngModel)]="mobilenumber" matInput [disabled]="!editing">
+            <input [(ngModel)]="mobilenumber" matInput [readonly]="!editing">
         </mat-form-field>
     </p>
-    <p><button mat-button (click)="OnEdit()">{{btn}}</button>
-        <button mat-button [disabled]="!editing" (click)="OnSave()">Save</button>
+    <p>
+        <button id="save" mat-raised-button [disabled]="!editing" (click)="OnSave()">Save</button>
         <!-- <button mat-button (click)="OnCancel()" [disabled]="!editing">Cancel</button> -->
+        <button id="cancel" mat-raised-button [disabled]="!editing" (click)="OnEdit()">Cancel</button>
+
     </p>
 
 </div>

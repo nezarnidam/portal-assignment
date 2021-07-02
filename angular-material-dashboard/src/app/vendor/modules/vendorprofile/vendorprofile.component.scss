@@ -13,3 +13,18 @@
     flex-direction: column;
    // align-items: center;
   }
+  button{
+    margin-left: 10px;
+    background-color: darkred;
+    color: white;
+  }
+  button:disabled{
+    visibility:hidden;
+  }
+  #save{
+    background-color: darkgreen;
+  }
+
+  mat-label{
+    color: darkred;
+  }

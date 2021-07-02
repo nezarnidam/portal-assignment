@@ -20,7 +20,7 @@ export class DefaultComponent implements OnInit {
       res => {
         if (res.status == 'no') {
           // this.loggedin = false;
-          this.route.navigate(['/customerlogin']);
+          this.route.navigate(['/']);
         }
         //  else {
         //   this.loggedin = true;

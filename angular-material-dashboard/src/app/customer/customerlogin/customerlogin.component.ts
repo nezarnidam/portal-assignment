@@ -2,6 +2,7 @@ import { Component, OnInit, NgModule, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventEmitter } from '@angular/core';
 import { CustomerAuthService } from '../customer-auth.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-customerlogin',
@@ -14,12 +15,18 @@ export class CustomerloginComponent implements OnInit {
   userid: string = '0000111112';
   pass: string = '12345678';
   er: boolean = false;
+  angForm: FormGroup;
+
+  constructor(private router: Router, private fb: FormBuilder, private customerAuthService: CustomerAuthService) {
+    this.createForm();
+  }
 
 
-  constructor(private router: Router, private customerAuthService: CustomerAuthService) { }
 
   ngOnInit() {
   }
+
+
   login() {
     const username = this.userid;
     const password = this.pass;
@@ -31,12 +38,6 @@ export class CustomerloginComponent implements OnInit {
         status = res.custAuth_status;
         if (status === 'S') {
           this.er = false;
-
-
-
-
-
-
 
           this.router.navigate(['/customer']);
         } else {
@@ -55,5 +56,12 @@ export class CustomerloginComponent implements OnInit {
   home() {
     this.router.navigate(['/']);
   }
+  createForm() {
+    this.angForm = this.fb.group({
+      custid: ['', Validators.required],
+      pass: ['', Validators.required]
+    });
 
+
+  }
 }

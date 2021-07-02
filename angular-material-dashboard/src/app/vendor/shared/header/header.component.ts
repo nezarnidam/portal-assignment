@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
   onSignOut() {
     this.vendorservice.vendorSignout().subscribe(
       res => {
-        this.router.navigate(["/"]);
+        this.router.navigate(["/vendorlogin"]);
       },
       error => {
         console.log(error);

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { VendorService } from '../vendor.service'
 @Component({
@@ -11,8 +12,10 @@ export class VendorloginComponent implements OnInit {
   vendorid: string = '0000000095';
   pass: string = '12345678';
   er: boolean = false;
-
-  constructor(private vendorservice: VendorService, private router: Router) { }
+  angForm: FormGroup;
+  constructor(private vendorservice: VendorService, private fb: FormBuilder, private router: Router) {
+    this.createForm();
+  }
 
   ngOnInit() {
   }
@@ -37,6 +40,14 @@ export class VendorloginComponent implements OnInit {
       }
     )
   }
+  createForm() {
+    this.angForm = this.fb.group({
+      vendorid: ['', Validators.required],
+      pass: ['', Validators.required]
+    });
 
+
+
+  }
 
 }
