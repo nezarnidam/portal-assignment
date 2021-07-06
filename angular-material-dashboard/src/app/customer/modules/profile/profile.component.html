@@ -3,7 +3,7 @@
     <p>
         <mat-form-field appearance="fill">
             <mat-label>Customer id</mat-label>
-            <input [(ngModel)]="custid" matInput readonly>
+            <input value="{{custid|number:'1.0'}}" matInput readonly>
         </mat-form-field>
         <button mat-button (click)="OnEdit()">{{btn}}</button>
     </p>
@@ -25,7 +25,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>city </mat-label>
+            <mat-label>City </mat-label>
             <input [(ngModel)]="city" matInput [readonly]="!editing">
         </mat-form-field>
         <!-- </p>

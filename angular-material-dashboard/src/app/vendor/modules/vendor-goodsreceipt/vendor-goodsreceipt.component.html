@@ -5,12 +5,12 @@
 
             <div class="cardhead" (click)="onClick(card.MAT_DOC)">
                 <!-- <h3>Goods head</h3> -->
-                <p>MAT_DOC : {{card.MAT_DOC}}</p>
-                <P>DOC_YEAR : {{card.DOC_YEAR}}</P>
-                <P>DOC_DATE : {{card.DOC_DATE}}</P>
-                <P>PSTNG_DATE : {{card.PSTNG_DATE}}</P>
-                <P>ENTRY_DATE : {{card.ENTRY_DATE}}</P>
-                <P>ENTRY_TIME : {{card.ENTRY_TIME}}</P>
+                <p>Document Number : {{card.MAT_DOC}}</p>
+                <P>Year : {{card.DOC_YEAR}}</P>
+                <P>Document Date : {{card.DOC_DATE | date:"dd/MM/yyyy"}}</P>
+                <P>Posting Date : {{card.PSTNG_DATE | date:"dd/MM/yyyy"}}</P>
+                <P>Entry Date : {{card.ENTRY_DATE | date:"dd/MM/yyyy"}}</P>
+                <P>Entry Time : {{card.ENTRY_TIME}}</P>
             </div>
         </div>
     </div>

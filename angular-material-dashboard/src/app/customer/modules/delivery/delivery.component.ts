@@ -41,7 +41,7 @@ export class DeliveryComponent implements OnInit {
       }
     });
     this.dialog.open(DeliveryitemComponent, {
-      width: '1000px',
+      width: '700px',
       data: { item: this.selected, context: value }
     });
   }

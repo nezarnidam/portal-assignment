@@ -3,7 +3,7 @@
     <p>
         <mat-form-field appearance="fill">
             <mat-label>Vendor id</mat-label>
-            <input [(ngModel)]="vendorDetails.ID" matInput readonly>
+            <input value="{{vendorDetails.ID|number:'1.0'}}" matInput readonly>
         </mat-form-field>
         <!-- </p>
     <p> -->

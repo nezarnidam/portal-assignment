@@ -5,46 +5,46 @@
 
     <!-- Position Column -->
     <ng-container matColumnDef="MAT_DOC">
-        <th mat-header-cell *matHeaderCellDef> MAT_DOC </th>
+        <th mat-header-cell *matHeaderCellDef> Document Number </th>
         <td mat-cell *matCellDef="let element"> {{element.MAT_DOC}} </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="MATDOC_ITM">
-        <th mat-header-cell *matHeaderCellDef> MATDOC_ITM </th>
-        <td mat-cell *matCellDef="let element"> {{element.MATDOC_ITM}} </td>
+        <th mat-header-cell *matHeaderCellDef> Item </th>
+        <td mat-cell *matCellDef="let element"> {{element.MATDOC_ITM | number:'1.0-3'}} </td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="MATERIAL">
-        <th mat-header-cell *matHeaderCellDef> MATERIAL </th>
+        <th mat-header-cell *matHeaderCellDef> Material </th>
         <td mat-cell *matCellDef="let element"> {{element.MATERIAL}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="PLANT">
-        <th mat-header-cell *matHeaderCellDef> PLANT </th>
+        <th mat-header-cell *matHeaderCellDef> Plant </th>
         <td mat-cell *matCellDef="let element"> {{element.PLANT}} </td>
     </ng-container>
 
     <ng-container matColumnDef="ENTRY_QNT">
-        <th mat-header-cell *matHeaderCellDef> ENTRY_QNT </th>
-        <td mat-cell *matCellDef="let element"> {{element.ENTRY_QNT}} </td>
+        <th mat-header-cell *matHeaderCellDef> Entry Quantity </th>
+        <td mat-cell *matCellDef="let element"> {{element.ENTRY_QNT | number:'1.0'}} </td>
     </ng-container>
 
     <ng-container matColumnDef="PO_NUMBER">
-        <th mat-header-cell *matHeaderCellDef> PO_NUMBER </th>
+        <th mat-header-cell *matHeaderCellDef> PO Number </th>
         <td mat-cell *matCellDef="let element"> {{element.PO_NUMBER}} </td>
     </ng-container>
 
     <ng-container matColumnDef="PO_ITEM">
-        <th mat-header-cell *matHeaderCellDef> PO_ITEM </th>
-        <td mat-cell *matCellDef="let element"> {{element.PO_ITEM}} </td>
+        <th mat-header-cell *matHeaderCellDef> PO Item </th>
+        <td mat-cell *matCellDef="let element"> {{element.PO_ITEM | number:'1.0'}} </td>
     </ng-container>
 
     <ng-container matColumnDef="AMOUNT_LC">
-        <th mat-header-cell *matHeaderCellDef> AMOUNT_LC </th>
-        <td mat-cell *matCellDef="let element"> {{element.AMOUNT_LC}} </td>
+        <th mat-header-cell *matHeaderCellDef> Amount </th>
+        <td mat-cell *matCellDef="let element"> {{element.AMOUNT_LC | number:'1.0-3'}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

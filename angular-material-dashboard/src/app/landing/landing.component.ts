@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import { SelfComponent } from '../self/self.component';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -13,7 +15,7 @@ export class LandingComponent implements AfterViewInit {
   @ViewChild('board', { static: false }) boardElement: ElementRef;
   @ViewChild('about', { static: false }) aboutElement: ElementRef;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private dialog: MatDialog) {
     if (this.router.url == '/') {
       this.componentActive = 1;
     }
@@ -105,4 +107,15 @@ export class LandingComponent implements AfterViewInit {
     this.router.navigate(['/employeelogin']);
     this.componentActive = 3;
   }
+  self() {
+    console.log("self clicked");
+    this.dialog.open(SelfComponent
+      // , {
+      // width: '1000px',
+      // height: '1000px',
+      // ,data: { item: this.selected, context: value }
+      // }
+    );
+  }
+
 }

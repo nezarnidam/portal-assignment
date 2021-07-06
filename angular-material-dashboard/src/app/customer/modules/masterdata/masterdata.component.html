@@ -24,7 +24,7 @@
             <tbody class="center">
                 <tr *ngFor="let item of customer_master">
                     <th>{{ item.row }}</th>
-                    <td>{{ item.ref_custId}}</td>
+                    <td>{{ item.ref_custId | number:'1.0'}}</td>
                     <td>{{ item.status }}</td>
                     <!-- <td>
                       <button type="button" >Delete</button>

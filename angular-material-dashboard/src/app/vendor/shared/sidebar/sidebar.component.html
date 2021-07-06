@@ -1,7 +1,7 @@
 <mat-nav-list>
     <div class=" profile-card">
         <img src="../../../../assets/images/profilepicture.png" alt="">
-        <h4>{{user_id}}</h4>
+        <h4>{{user_id | number:'1.0'}}</h4>
     </div>
     <mat-divider></mat-divider>
     <mat-expansion-panel hideToggle>
@@ -26,6 +26,8 @@
         <a mat-list-item routerLinkActive="list-item-active" routerLink="/vendor/debit">Debit</a>
         <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/customer/invoice">Invoice</a> -->
         <a mat-list-item routerLinkActive="list-item-active" routerLink="/vendor/paymentaging">Payment aging</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/vendor/invoice">Invoice</a>
+
         <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/customer/overallsales">Overall sales</a> -->
 
     </mat-expansion-panel>

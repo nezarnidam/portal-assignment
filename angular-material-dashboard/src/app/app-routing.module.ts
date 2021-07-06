@@ -25,6 +25,7 @@ import { VendorpaymentagingComponent } from './vendor/modules/vendorpaymentaging
 import { VendorPOComponent } from './vendor/modules/vendor-po/vendor-po.component';
 import { VendorGoodsreceiptComponent } from './vendor/modules/vendor-goodsreceipt/vendor-goodsreceipt.component';
 import { EmployeeloginComponent } from './employee/employeelogin/employeelogin.component';
+import { VendorinvoiceComponent } from './vendor/modules/vendorinvoice/vendorinvoice.component';
 
 const routes: Routes = [{
   path: '',
@@ -133,6 +134,10 @@ const routes: Routes = [{
     {
       path: 'paymentaging',
       component: VendorpaymentagingComponent
+    },
+    {
+      path: 'invoice',
+      component: VendorinvoiceComponent
     }
   ]
 }];

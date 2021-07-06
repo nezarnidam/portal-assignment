@@ -7,27 +7,27 @@
             <!-- <p>SOLD TO{{card.SOLD_TO}}</p> -->
             <!-- <div class="cardhead"> -->
             <!-- <h3>Inquiry Header</h3> -->
-            <p>COMP CODE : {{card.COMP_CODE}}</p>
-            <p>CUSTOMER : {{card.CUSTOMER}} </p>
-            <p>ALLOC NUM : {{card.ALLOC_NUM}}</p>
-            <p>FISC YEAR : {{card.FISC_YEAR}}</p>
-            <p>ITEM NUM : {{card.ITEM_NUM}}</p>
+            <p>Company Code : {{card.COMP_CODE}}</p>
+            <p>Customer : {{card.CUSTOMER | number:'1.0'}} </p>
+            <p>Alloc Number : {{card.ALLOC_NUM | number:'1.0'}}</p>
+            <p>Fiscal Year : {{card.FISC_YEAR}}</p>
+            <p>Item Number : {{card.ITEM_NUM | number:'1.0'}}</p>
             <!-- <p>CREATED BY : {{card.ITM_NUMBER}}</p> -->
 
             <!-- </div> -->
             <!-- <mat-divider></mat-divider> -->
             <!-- <div class="carditem"> -->
             <!-- <h3>Inquiry Item</h3> -->
-            <p>BILL DOC : {{card.BILL_DOC}}</p>
+            <p>Bill Document Number : {{card.BILL_DOC | number:'1.0'}}</p>
 
-            <p>POSTING DATE : {{card.POSTING_DATE}}</p>
-            <p>PAYMENT TERMS : {{card.PAYMENT_TERMS}}</p>
-            <p>AMNT LOCAL : {{card.AMNT_LOCAL}}</p>
+            <p>Posting Date : {{card.POSTING_DATE | date:'dd/MM/yyyy'}}</p>
+            <p>Payment Terms : {{card.PAYMENT_TERMS | number:'1.0'}}</p>
+            <p>Amount : {{card.AMNT_LOCAL | number:'1.3-3'}}</p>
 
 
-            <p>AMNT DOC : {{card.AMNT_DOC}}</p>
-            <p>TAX LOCAL : {{card.TAX_LOCAL}}</p>
-            <p>PAY AGING : {{card.PAY_AGING}}</p>
+            <!-- <p>Amount Document : {{card.AMNT_DOC}}</p> -->
+            <p>Tax : {{card.TAX_LOCAL}}</p>
+            <p>Aging(days) : {{card.PAY_AGING}}</p>
             <!-- </div> -->
         </div>
     </div>

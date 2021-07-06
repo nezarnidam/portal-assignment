@@ -1273,7 +1273,12 @@ app.post('/vendorPaymentaging', (req, res) => {
     prom.then(([dat, ret]) => {
         if (ret === 'S') {
             // console.log("inside if")
+
             dat.forEach((elm) => {
+                let startDate = moment(elm.PSTNG_DATE, "YYYY/MM/DD");
+                let todayDate = moment(new Date()).format("YYYY/MM/DD");
+                let endDate = moment(todayDate, "YYYY/MM/DD");
+                let payage = endDate.diff(startDate, 'days');
                 let obj = `{ 
                        "COMP_CODE": "${elm.COMP_CODE}",
                        "FISC_YEAR": "${elm.FISC_YEAR}",
@@ -1283,7 +1288,8 @@ app.post('/vendorPaymentaging', (req, res) => {
                        "DOC_DATE": "${elm.DOC_DATE}",
                        "CURRENCY": "${elm.CURRENCY}",
                        "LC_AMOUNT": "${elm.LC_AMOUNT}",
-                       "BLINE_DATE": "${elm.BLINE_DATE}"
+                       "BLINE_DATE": "${elm.BLINE_DATE}",
+                       "AGING": "${payage}"
                      }`;
                 arr.push(JSON.parse(obj));
             })
@@ -1293,6 +1299,117 @@ app.post('/vendorPaymentaging', (req, res) => {
             res.status(401).send("No data available");
         }
     });
+})
+
+
+
+
+//VENDOR INVOICE 
+
+const vendorInvoice_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDORINVOICENZ/';
+const vendorInvoice_xml = (vendor) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_VENDOR_INV_DISP_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <VENDORID>10036</VENDORID>
+    </ns0:ZBAPI_VENDOR_INV_DISP_NZ>`;
+    return xml;
+}
+vendorInvoice = async (vendor) => {
+    let resData;
+    const { response } = await soapRequest({ url: vendorInvoice_url, headers: sampleHeaders, xml: vendorInvoice_xml(vendor), timeout: 10000 }); // Optional timeout parameter(milliseconds)
+    const { headers, body, statusCode } = response;
+
+    resData = body;
+    try {
+        resData = body.IT_HEAD.item;
+        if (resData.length < 1) {
+            ret = 'E';
+        }
+        else {
+            ret = 'S';
+        }
+    }
+    catch (err) {
+        ret = 'E';
+    }
+
+    return [resData, ret];
+}
+
+
+app.post('/vendorInvoice', (req, res) => {
+
+    vendor = vendorid;
+    let prom = vendorInvoice(vendor);
+    let arr = [];
+    // console.log("works");
+    prom.then(([dat, ret]) => {
+        if (ret === 'S') {
+            // console.log("inside if")
+            dat.forEach((elm) => {
+                let obj = `{ 
+                       "INV_DOC_NO": "${elm.INV_DOC_NO}",
+                       "FISC_YEAR": "${elm.FISC_YEAR}",
+                       "PSTNG_DATE": "${elm.PSTNG_DATE}",
+                       "ENTRY_DATE": "${elm.ENTRY_DATE}", 
+                       "COMP_CODE": "${elm.COMP_CODE}",
+                       "GROSS_AMNT": "${elm.GROSS_AMNT}",
+                       "CURRENCY": "${elm.CURRENCY}",
+                       "INVOICE_STATUS": "${elm.INVOICE_STATUS}"
+                     }`;
+                arr.push(JSON.parse(obj));
+            })
+            res.status(200).send({ invoice_data: arr });
+            console.log("array: " + arr);
+        }
+        else {
+            res.status(401).send("No data available");
+        }
+    });
+})
+
+
+
+//VENDOR INVOICE PDF
+
+const vendorInvoicePdf_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDORINVOICEPRINTNZ/';
+const vendorInvoicePdf_xml = (vendor, fisc, invNo) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_VENDOR_INV_PRINT_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <P_FISC>${fisc}</P_FISC>
+       <P_INVNO>${invNo}</P_INVNO>
+       <P_VENDOR>${vendor}</P_VENDOR>
+    </ns0:ZBAPI_VENDOR_INV_PRINT_NZ>`;
+    return xml;
+}
+vendorInvoicePdf = async (vendor, fisc, invNo) => {
+    let resData;
+    const { response } = await soapRequest({ url: vendorInvoicePdf_url, headers: sampleHeaders, xml: vendorInvoicePdf_xml(vendor, fisc, invNo), timeout: 10000 }); // Optional timeout parameter(milliseconds)
+    const { headers, body, statusCode } = response;
+
+    resData = body;
+    resData = body.BASE64_PDF.item;
+    return resData;
+}
+
+
+app.post('/vendorInvoicePdf', (req, res) => {
+
+    vendor = vendorid;
+    fisc = req.body.fisc;
+    invNo = req.body.invNo;
+    console.log(fisc);
+    console.log(invNo);
+    let prom = vendorInvoicePdf(vendor, fisc, invNo);
+
+    prom.then((dat) => {
+        let obj = `{"PDF": "${dat}"}`;
+
+        obj = JSON.parse(obj);
+        res.status(200).send(obj);
+
+    });
+
 })
 
 

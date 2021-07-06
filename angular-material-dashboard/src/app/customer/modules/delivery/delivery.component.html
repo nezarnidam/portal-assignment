@@ -4,15 +4,15 @@
         <div class="card" id="card{{i}}">
             <!-- <p>SOLD TO{{card.SOLD_TO}}</p> -->
             <div class="cardhead" (click)="onClick(card.DOC_NUMBER)">
-                <h3>Delivery Header</h3>
-                <p>DOCUMENT NUMBER : {{card.DOC_NUMBER}} </p>
-                <p>CREATED BY : {{card.CREATED_BY}}</p>
-                <p>ENTRY TIME : {{card.ENTRY_TIME}}</p>
-                <p>CREATED ON : {{card.CREATED_ON}}</p>
-                <p>LOADING DATE : {{card.LOADING_DATE}}</p>
-                <p>DELIVERY DATE : {{card.DELIVERY_DATE}}</p>
-                <p>SHIPPING POINT : {{card.SHIPPING_POINT}}</p>
-                <p>PICKING DATE : {{card.PICKING_DATE}}</p>
+                <!-- <h3>Delivery Header</h3> -->
+                <p>Document Number : {{card.DOC_NUMBER | number:'1.0'}} </p>
+                <p>Created By : {{card.CREATED_BY}}</p>
+                <p>Entry Time : {{card.ENTRY_TIME}}</p>
+                <p>Created On : {{card.CREATED_ON | date:'dd/MM/yyyy'}}</p>
+                <p>Loading Date : {{card.LOADING_DATE | date:'dd/MM/yyyy'}}</p>
+                <p>Delivery Date : {{card.DELIVERY_DATE | date:'dd/MM/yyyy'}}</p>
+                <p>Shipping Point : {{card.SHIPPING_POINT}}</p>
+                <p>Picking Date : {{card.PICKING_DATE | date:'dd/MM/yyyy'}}</p>
             </div>
         </div>
     </div>

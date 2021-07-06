@@ -5,10 +5,10 @@
 
             <div class="cardhead" (click)="onClick(card.PO_NUMBER)">
                 <!-- <h3>Goods head</h3> -->
-                <p>PO_NUMBER : {{card.PO_NUMBER}}</p>
-                <P>CREATED_ON : {{card.CREATED_ON}}</P>
-                <P>CREATED_BY : {{card.CREATED_BY}}</P>
-                <P>CURRENCY : {{card.CURRENCY}}</P>
+                <p>PO Number : {{card.PO_NUMBER}}</p>
+                <P>Created On : {{card.CREATED_ON | date:'dd/MM/yyyy'}}</P>
+                <P>Created BY : {{card.CREATED_BY}}</P>
+                <P>Currency : {{card.CURRENCY}}</P>
 
             </div>
         </div>

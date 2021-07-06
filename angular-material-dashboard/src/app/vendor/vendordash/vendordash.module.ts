@@ -17,6 +17,7 @@ import { VendorGoodsreceiptComponent } from '../modules/vendor-goodsreceipt/vend
 import { GritemComponent } from '../modules/dialog/gritem/gritem.component';
 import { POitemComponent } from '../modules/dialog/poitem/poitem.component';
 import { RFQitemComponent } from '../modules/dialog/rfqitem/rfqitem.component';
+import { VendorinvoiceComponent } from '../modules/vendorinvoice/vendorinvoice.component';
 @NgModule({
   declarations: [
     VendordashComponent,
@@ -28,6 +29,7 @@ import { RFQitemComponent } from '../modules/dialog/rfqitem/rfqitem.component';
     VendorpaymentagingComponent,
     VendorPOComponent,
     VendorGoodsreceiptComponent,
+    VendorinvoiceComponent,
     GritemComponent,
     POitemComponent,
     RFQitemComponent

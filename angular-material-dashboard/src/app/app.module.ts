@@ -15,6 +15,8 @@ import { FormsModule, NgForm, NgModel, ReactiveFormsModule } from '@angular/form
 import { VendorloginComponent } from './vendor/vendorlogin/vendorlogin.component';
 import { VendordashModule } from './vendor/vendordash/vendordash.module';
 import { EmployeeloginComponent } from './employee/employeelogin/employeelogin.component';
+import { VendorinvoiceComponent } from './vendor/modules/vendorinvoice/vendorinvoice.component';
+import { SelfComponent } from './self/self.component';
 // import { HttpClient } from '@angular/common/http';
 // import { ProfileComponent } from './customer/modules/profile/profile.component';
 // import { InquiryComponent } from './customer/modules/inquiry/inquiry.component';
@@ -33,6 +35,7 @@ import { EmployeeloginComponent } from './employee/employeelogin/employeelogin.c
   declarations: [
     AppComponent,
     LandingComponent,
+    SelfComponent,
     CustomerloginComponent,
 
     VendorloginComponent,
@@ -49,6 +52,13 @@ import { EmployeeloginComponent } from './employee/employeelogin/employeelogin.c
 
 
 
+
+
+
+
+  ],
+  entryComponents: [
+    SelfComponent
   ],
   imports: [
     BrowserModule,

@@ -13,16 +13,24 @@
     </div>
   </mat-expansion-panel>
 </p> -->
-<div class="mat-action-row-class">
 
-  <button mat-button [ngClass]="{'active': currentActive === 1}" (click)="scrollTologin()">Login</button>
-  <button mat-button [ngClass]="{'active': currentActive === 2}" (click)="scrollToBoard()">Board of
-    Directors</button>
-  <button mat-button [ngClass]="{'active': currentActive === 3}" (click)="scrollToAbout()">About</button>
-</div>
-<!-- <div class="spacer"></div> -->
-<div class="content" #login id="loginId">
-  <!-- <mat-form-field appearance="fill">
+<body style="background-image:url('../../assets/images/black_line.png'); background-attachment: fixed;">
+  <div class="mat-action-row-class">
+
+    <button mat-button [ngClass]="{'active': currentActive === 1}" (click)="scrollTologin()">Login</button>
+    <button mat-button [ngClass]="{'active': currentActive === 2}" (click)="scrollToBoard()">Board of
+      Directors</button>
+    <button mat-button [ngClass]="{'active': currentActive === 3}" (click)="scrollToAbout()">About</button>
+    <!-- <button mat-button [ngClass]="{'active': currentActive === 4}" (click)="scrollToMe()">
+      <mat-icon>account_circle</mat-icon>
+    </button> -->
+
+  </div>
+  <!-- <div> -->
+  <!-- <div class="spacer"></div> -->
+  <div class="content" #login id="loginId">
+    <!--  style="background-image:url('../../assets/images/landing\ wall.jpg');" -->
+    <!-- <mat-form-field appearance="fill">
       <mat-label>Portal</mat-label>
       <mat-select id="select">
         <mat-option value="red" (click)="onlogin()">Customer</mat-option>
@@ -30,108 +38,118 @@
         <mat-option value="blue" (click)="onlogin()">Employee</mat-option>
       </mat-select>
     </mat-form-field> -->
-  <router-outlet></router-outlet>
-  <div class="selection">
-    <button mat-button [ngClass]="{'active': componentActive === 1}" (click)="onCustomer()">Customer</button>
-    <button mat-button [ngClass]="{'active': componentActive === 2}" (click)="onVendor()">Vendor</button>
-    <button mat-button [ngClass]="{'active': componentActive === 3}" (click)="onEmployee()">Employee</button>
-  </div>
-
-</div>
-<div class="content" #board id="boardId">
-  <h1>Board of Directors</h1>
-  <div class="cards">
-    <div class="card">
-      <img src="../../assets/images/ceo.png" alt="John" style="width:100%">
-      <h3>Maran Nagarajan</h3>
-      <p class="title">Chairman & CEO</p>
-      <!-- <p>Harvard University</p> -->
-      <!-- <p><button>Contact</button></p> -->
-    </div>
-    <div class="card">
-      <img src="../../assets/images/executive director.png" alt="John" style="width:100%">
-      <h3>Ratna Kumar N</h3>
-      <p class="title">Executive Director</p>
-      <!-- <p>Kaar Technologies</p> -->
-      <!-- <p><button>Contact</button></p> -->
-    </div>
-    <div class="card">
-      <img src="../../assets/images/co-founder.png" alt="John" style="width:100%">
-      <h3>M Selvakumaran</h3>
-      <p class="title">Co-founder & Director</p>
-      <!-- <p>Harvard University</p> -->
-      <!-- <p><button>Contact</button></p> -->
-    </div>
-    <div class="card">
-      <img src="../../assets/images/co-founder&director.png" alt="John" style="width:100%">
-      <h3>George Guargian</h3>
-      <p class="title">Co-founder & Director</p>
-      <!-- <p>Harvard University</p> -->
-      <!-- <p><button>Contact</button></p> -->
-    </div>
-    <div class="card">
-      <img src="../../assets/images/Director.png" alt="John" style="width:100%">
-      <h3>Frans Damen</h3>
-      <p class="title">Director</p>
-      <!-- <p>Harvard University</p> -->
-      <!-- <p><button>Contact</button></p> -->
-    </div>
-    <div class="card">
-      <img src="../../assets/images/member.png" alt="John" style="width:100%">
-      <h3>Balakrishnan V</h3>
-      <p class="title">Member of Board, Example</p>
-      <!-- <p>Harvard University</p> -->
-      <!-- <p><button>Contact</button></p> -->
+    <router-outlet></router-outlet>
+    <div class="selection">
+      <button mat-button [ngClass]="{'active': componentActive === 1}" (click)="onCustomer()">Customer</button>
+      <button mat-button [ngClass]="{'active': componentActive === 2}" (click)="onVendor()">Vendor</button>
+      <button mat-button [ngClass]="{'active': componentActive === 3}" (click)="onEmployee()">Employee</button>
     </div>
 
   </div>
+  <div class="content" #board id="boardId">
+    <h1>Board of Directors</h1>
+    <div class="cards">
+      <div class="card">
+        <img src="../../assets/images/ceo.png" alt="John" style="width:100%">
+        <h3>Maran Nagarajan</h3>
+        <p class="title">Chairman & CEO</p>
+        <!-- <p>Harvard University</p> -->
+        <!-- <p><button>Contact</button></p> -->
+      </div>
+      <div class="card">
+        <img src="../../assets/images/executive director.png" alt="John" style="width:100%">
+        <h3>Ratna Kumar N</h3>
+        <p class="title">Executive Director</p>
+        <!-- <p>Kaar Technologies</p> -->
+        <!-- <p><button>Contact</button></p> -->
+      </div>
+      <div class="card">
+        <img src="../../assets/images/co-founder.png" alt="John" style="width:100%">
+        <h3>M Selvakumaran</h3>
+        <p class="title">Co-founder & Director</p>
+        <!-- <p>Harvard University</p> -->
+        <!-- <p><button>Contact</button></p> -->
+      </div>
+      <div class="card">
+        <img src="../../assets/images/co-founder&director.png" alt="John" style="width:100%">
+        <h3>George Guargian</h3>
+        <p class="title">Co-founder & Director</p>
+        <!-- <p>Harvard University</p> -->
+        <!-- <p><button>Contact</button></p> -->
+      </div>
+      <div class="card">
+        <img src="../../assets/images/Director.png" alt="John" style="width:100%">
+        <h3>Frans Damen</h3>
+        <p class="title">Director</p>
+        <!-- <p>Harvard University</p> -->
+        <!-- <p><button>Contact</button></p> -->
+      </div>
+      <div class="card">
+        <img src="../../assets/images/member.png" alt="John" style="width:100%">
+        <h3>Balakrishnan V</h3>
+        <p class="title">Member of Board, Example</p>
+        <!-- <p>Harvard University</p> -->
+        <!-- <p><button>Contact</button></p> -->
+      </div>
 
-</div>
-<div class="spacer"></div>
-<!-- <mat-divider></mat-divider>
+    </div>
+
+  </div>
+  <!-- <div class="spacer"></div> -->
+  <!-- <mat-divider></mat-divider>
     <div class="spacer"></div> -->
-<!-- <a name="about"></a> -->
-<div class="content" #about id="aboutId" style="min-height: 90%;">
-  <!-- style="flex-direction: row;" -->
+  <!-- <a name="about"></a> -->
+  <div class="content" #about id="aboutId" style="min-height: 90%;">
+    <!-- style="flex-direction: row;" -->
 
 
-  <!-- <h1>About</h1> -->
-  <a href="https://www.kaartech.com/" target="_blank"><img src="../../assets/images/logo.png" alt="logo"
-      style="width: 250px; height: 250px;"></a>
+    <!-- <h1>About</h1> -->
+    <a href="https://www.kaartech.com/" target="_blank"><img src="../../assets/images/logo.png" alt="logo"
+        style="width: 250px; height: 250px;"></a>
 
-  <div class="about">
+    <div class="about">
 
-    Kaar Technologies is a global consulting firm
-    focused at
-    designing,
-    delivering and deploying the
-    finest ideas and SAP expertise to empower companies in achieving new heights of excellence in today’s
-    challenging
-    business landscape.
-    <!-- <br> -->
-    Our combined thrust drawn from the business vision of our leadership team and assimilated SAP capability propels
-    us
-    to
-    partner with our clients in identifying and architecting their business agenda. As a CMMi level 3 company, Kaar
-    believes in being a trusted advisor to clients and fosters long-term working relationships by exceeding customer
-    expectations.
-    <!-- <br> -->
-    Driven by the steadfast pursuit of excellence, Kaar Technologies exudes professionalism and proficiency in all
-    areas
-    of function. Every day we are inspired to impact businesses with original and imaginative approaches and help
-    cultivate tomorrow’s breakthroughs.
+      Kaar Technologies is a global consulting firm
+      focused at
+      designing,
+      delivering and deploying the
+      finest ideas and SAP expertise to empower companies in achieving new heights of excellence in today’s
+      challenging
+      business landscape.
+      <br>
+      Our combined thrust drawn from the business vision of our leadership team and assimilated SAP capability propels
+      us
+      to
+      partner with our clients in identifying and architecting their business agenda. As a CMMi level 3 company, Kaar
+      believes in being a trusted advisor to clients and fosters long-term working relationships by exceeding customer
+      expectations.
+      <br>
+      Driven by the steadfast pursuit of excellence, Kaar Technologies exudes professionalism and proficiency in all
+      areas
+      of function. Every day we are inspired to impact businesses with original and imaginative approaches and help
+      cultivate tomorrow’s breakthroughs.
+    </div>
   </div>
-</div>
-<footer>
-  <span>
-    Follow us |
-  </span>
-  <a href="https://www.linkedin.com/company/kaar-technologies-pvt-ltd-/" target="_blank"><img
-      src="../../assets/images/linked.png" alt=""></a>
-  <a href="https://twitter.com/kaartech" target="_blank"><img src="../../assets/images/twitter.png" alt=""></a>
+  <!-- </div> -->
+  <!-- <div class="content" #me id="meId"></div> -->
+  <footer>
+    <span>
+      Follow us |
+    </span>
+    <a href="https://www.linkedin.com/company/kaar-technologies-pvt-ltd-/" target="_blank"><img
+        src="../../assets/images/linked.png" alt=""></a>
+    <a href="https://twitter.com/kaartech" target="_blank"><img src="../../assets/images/twitter.png" alt=""></a>
 
-  <a href="https://www.youtube.com/user/Kaartech" target="_blank"><img src="../../assets/images/youtube.png" alt=""></a>
+    <a href="https://www.youtube.com/user/Kaartech" target="_blank"><img src="../../assets/images/youtube.png"
+        alt=""></a>
 
-  <a href="https://www.facebook.com/kaartech" target="_blank"><img src="../../assets/images/facebook.png" alt=""></a>
-
-</footer>
+    <a href="https://www.facebook.com/kaartech" target="_blank"><img src="../../assets/images/facebook.png" alt=""></a>
+    <span>
+      Developed by |
+    </span>
+    <button mat-button (click)="self()">
+      <!-- <mat-icon>account_circle</mat-icon> -->
+      <img src="../../assets/images/profilepicture.png" alt="" style="width: 25px;height: 25px;">
+    </button>
+  </footer>
+</body>

@@ -84,6 +84,19 @@ export class VendorService {
   vendorGoodsreceipt() {
     return this.http.post<any>('api/vendorGoodsreceipt', {});
   }
+  vendorInvoice() {
+    return this.http.post<any>(
+      'api/vendorInvoice', {
+    });
+  }
+
+  vendorInvoicePdf(invNo, fisc) {
+    return this.http.post<any>(
+      'api/vendorInvoicePdf', {
+      invNo: invNo,
+      fisc: fisc,
+    });
+  }
 
 
 }

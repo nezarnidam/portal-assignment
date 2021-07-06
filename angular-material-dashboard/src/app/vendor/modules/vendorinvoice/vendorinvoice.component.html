@@ -1,0 +1,20 @@
+<!-- {{Inquiry[0].DOC_NUMBER}} -->
+
+<div class="a">
+    <h2>Invoice</h2>
+    <div class="cardholder" *ngFor="let card of invoiceData; index as i">
+        <div class="card" id="card{{i}}">
+            <!-- <p>SOLD TO{{card.SOLD_TO}}</p> -->
+            <p>Invoice Number : {{card.INV_DOC_NO}}</p>
+            <p>Fiscal Year : {{card.FISC_YEAR}}</p>
+            <p>Posting Date : {{card.PSTNG_DATE | date: 'dd/MM/yyyy'}}</p>
+            <p>Entry Date : {{card.ENTRY_DATE | date: 'dd/MM/yyyy'}}</p>
+
+            <p>Company Code : {{card.COMP_CODE}}</p>
+            <p>Currency : {{card.CURRENCY}}</p>
+            <p>Gross Amount : {{card.GROSS_AMNT | number : '1.3-3'}}</p>
+            <p>Invoice Status : {{card.INVOICE_STATUS}}</p>
+            <button mat-button (click)="onDownload(card.INV_DOC_NO,card.FISC_YEAR)">Download</button>
+        </div>
+    </div>
+</div>

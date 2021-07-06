@@ -5,11 +5,11 @@
 
             <div class="cardhead" (click)="onClick(card.DOC_NUMBER)">
                 <!-- <h3>Goods head</h3> -->
-                <p>DOC_NUMBER : {{card.DOC_NUMBER}}</p>
-                <P>SOLD_TO : {{card.SOLD_TO}}</P>
-                <P>REC_DATE : {{card.REC_DATE}}</P>
-                <p>REC_TIME :{{card.REC_TIME}}</p>
-                <P>CREATED_BY : {{card.CREATED_BY}}</P>
+                <p>Document Number : {{card.DOC_NUMBER | number : '1.0-0'}}</p>
+                <P>Sold To : {{card.SOLD_TO | number : '1.0-0'}}</P>
+                <P>Rec Date : {{card.REC_DATE | date:'dd/MM/yyyy'}}</P>
+                <p>Rec Time :{{card.REC_TIME}}</p>
+                <P>Created BY : {{card.CREATED_BY}}</P>
 
             </div>
         </div>

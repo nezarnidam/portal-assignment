@@ -7,22 +7,22 @@
             <!-- <p>SOLD TO{{card.SOLD_TO}}</p> -->
             <!-- <div class="cardhead"> -->
             <!-- <h3>Inquiry Header</h3> -->
-            <p>SD_DOC : {{card.SD_DOC}} </p>
-            <p>NAME : {{card.NAME}}</p>
-            <p>DOC_DATE : {{card.DOC_DATE}}</p>
+            <p>SD Documber : {{card.SD_DOC | number:'1.0'}} </p>
+            <p>Name : {{card.NAME}}</p>
+            <p>Document Date : {{card.DOC_DATE | date:'dd/MM/yyyy'}}</p>
             <!-- <p>CREATED BY : {{card.ITM_NUMBER}}</p> -->
 
             <!-- </div> -->
             <!-- <mat-divider></mat-divider> -->
             <!-- <div class="carditem"> -->
             <!-- <h3>Inquiry Item</h3> -->
-            <p>MATERIAL : {{card.MATERIAL}}</p>
-            <p>REQ_DATE : {{card.REQ_DATE}}</p>
-            <p>ITM NUMBER : {{card.ITM_NUMBER}}</p>
-            <p>SHORT TEXT : {{card.SHORT_TEXT}}</p>
-            <p>REQ QTY : {{card.REQ_QTY}}</p>
-            <p>NET PRICE : {{card.NET_PRICE}}</p>
-            <p>DOC_TYPE : {{card.DOC_TYPE}}</p>
+            <p>Material : {{card.MATERIAL}}</p>
+            <p>Req Date : {{card.REQ_DATE | date:'dd/MM/yyyy'}}</p>
+            <p>Item Number : {{card.ITM_NUMBER | number:'1.0'}}</p>
+            <p>Short Text : {{card.SHORT_TEXT}}</p>
+            <p>Req Quantity : {{card.REQ_QTY |number:'1.0'}}</p>
+            <p>Net Price : {{card.NET_PRICE |number:'1.2-2'}}</p>
+            <p>Document Type : {{card.DOC_TYPE}}</p>
             <!-- </div> -->
         </div>
     </div>
