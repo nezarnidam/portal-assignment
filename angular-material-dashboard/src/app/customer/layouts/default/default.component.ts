@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomerAuthService } from '../../customer-auth.service';
+import { CustomerServices } from '../../customer-services.service';
 
 @Component({
   selector: 'app-default',
@@ -13,9 +14,10 @@ export class DefaultComponent implements OnInit {
   // loggedin = false;
   sideBarOpen = true;
 
-  constructor(private customerservice: CustomerAuthService, private route: Router) { }
+  constructor(private customerservices: CustomerServices, private customerservice: CustomerAuthService, private route: Router) { }
 
   ngOnInit() {
+
     this.customerservice.loggedin().subscribe(
       res => {
         if (res.status == 'no') {
@@ -29,13 +31,18 @@ export class DefaultComponent implements OnInit {
       error => {
         console.log(error);
       }
-    )
+    );
+    this.customerservices.init();
+
   }
 
 
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
 
+  }
+  ngOnDestroy() {
+    this.customerservices.clear();
   }
 
 

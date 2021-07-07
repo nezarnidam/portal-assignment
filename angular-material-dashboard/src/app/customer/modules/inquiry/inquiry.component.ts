@@ -17,19 +17,23 @@ export class InquiryComponent implements OnInit {
   Item: any = [];
   selected: any = [];
 
-  constructor(private customerinquiry: CustomerServices, private dialog: MatDialog) { }
+  constructor(private customerservices: CustomerServices, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.customerinquiry.customerInquiry('').subscribe(
-      res => {
-        // this.Inquiry = res.inquiry_data;
-        this.Head = res.head;
-        this.Item = res.item;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    // this.customerinquiry.customerInquiry().subscribe(
+    //   res => {
+    //     // this.Inquiry = res.inquiry_data;
+    //     this.Head = res.head;
+    //     this.Item = res.item;
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // )
+    // this.customerinquiry.setInquiry();
+    this.Head = this.customerservices.getInquiryHead();
+    console.log(this.Head);
+    this.Item = this.customerservices.getInquiryItem();
 
   }
   onClick(value) {

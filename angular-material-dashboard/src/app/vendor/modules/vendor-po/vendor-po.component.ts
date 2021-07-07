@@ -15,15 +15,17 @@ export class VendorPOComponent implements OnInit {
   constructor(private vendorservice: VendorService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.vendorservice.vendorPO().subscribe(
-      res => {
-        this.Headdata = res.head_data;
-        this.Itemdata = res.item_data;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    // this.vendorservice.vendorPO().subscribe(
+    //   res => {
+    //     this.Headdata = res.head_data;
+    //     this.Itemdata = res.item_data;
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // )
+    this.Headdata = this.vendorservice.getPOHead();
+    this.Itemdata = this.vendorservice.getPOItem();
   }
   onClick(value) {
     this.selected = [];
@@ -35,7 +37,7 @@ export class VendorPOComponent implements OnInit {
       }
     });
     this.dialog.open(POitemComponent, {
-      width: '1000px',
+      width: '700px',
       data: { item: this.selected, context: value }
     });
   }

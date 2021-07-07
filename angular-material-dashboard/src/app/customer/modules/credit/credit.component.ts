@@ -14,14 +14,15 @@ export class CreditComponent implements OnInit {
   constructor(private customerservices: CustomerServices) { }
 
   ngOnInit() {
-    this.customerservices.customerCredit().subscribe(
-      res => {
-        this.creditDetails = res.credit_data;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    // this.customerservices.customerCredit().subscribe(
+    //   res => {
+    //     this.creditDetails = res.credit_data;
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // )
+    this.creditDetails = this.customerservices.getCredit();
   }
 
 }

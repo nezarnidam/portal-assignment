@@ -11,14 +11,18 @@ export class VendorcreditComponent implements OnInit {
   constructor(private vendorservice: VendorService) { }
 
   ngOnInit() {
-    this.vendorservice.vendorCredit().subscribe(
-      res => {
-        this.creditData = res.credit_data;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    // this.vendorservice.vendorCredit().subscribe(
+    //   res => {
+    //     this.creditData = res.credit_data;
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // )
+    this.creditData = this.vendorservice.getCredit();
+    // console.log(this.creditData);
   }
+
+
 
 }

@@ -14,14 +14,15 @@ export class DebitComponent implements OnInit {
   constructor(private customerservices: CustomerServices) { }
 
   ngOnInit() {
-    this.customerservices.customerDebit().subscribe(
-      res => {
-        this.debitDetails = res.debit_data;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    // this.customerservices.customerDebit().subscribe(
+    //   res => {
+    //     this.debitDetails = res.debit_data;
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // )
+    this.debitDetails = this.customerservices.getDebit();
   }
 
 }

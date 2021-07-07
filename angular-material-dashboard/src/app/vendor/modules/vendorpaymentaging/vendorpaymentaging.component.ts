@@ -11,14 +11,15 @@ export class VendorpaymentagingComponent implements OnInit {
   constructor(private vendorservice: VendorService) { }
 
   ngOnInit() {
-    this.vendorservice.vendorPaymentaging().subscribe(
-      res => {
-        this.paymentagingData = res.paymentaging_data;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    // this.vendorservice.vendorPaymentaging().subscribe(
+    //   res => {
+    //     this.paymentagingData = res.paymentaging_data;
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // )
+    this.paymentagingData = this.vendorservice.getPaymentsAging();
   }
 
 }

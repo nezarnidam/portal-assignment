@@ -16,17 +16,19 @@ export class VendorGoodsreceiptComponent implements OnInit {
   constructor(private vendor: VendorService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.vendor.vendorGoodsreceipt().subscribe(
-      res => {
-        this.item = res.Itemdata;
-        this.head = res.Headdata;
-        console.log(this.head);
-        console.log(this.item);
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    // this.vendor.vendorGoodsreceipt().subscribe(
+    //   res => {
+    //     this.item = res.Itemdata;
+    //     this.head = res.Headdata;
+    //     console.log(this.head);
+    //     console.log(this.item);
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // )
+    this.head = this.vendor.getGRHead();
+    this.item = this.vendor.getGRItem();
   }
 
   onClick(value) {

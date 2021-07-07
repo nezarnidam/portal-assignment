@@ -17,16 +17,18 @@ export class VendorRFQComponent implements OnInit {
   constructor(private vendorservice: VendorService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.vendorservice.vendorRFQ().subscribe(
-      res => {
-        // this.RFQdata = res.rfq_data;
-        this.Head = res.head;
-        this.Item = res.item;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    // this.vendorservice.vendorRFQ().subscribe(
+    //   res => {
+    //     // this.RFQdata = res.rfq_data;
+    //     this.Head = res.head;
+    //     this.Item = res.item;
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // )
+    this.Head = this.vendorservice.getRFQHead();
+    this.Item = this.vendorservice.getRFQItem();
   }
 
   onClick(value) {

@@ -13,14 +13,15 @@ export class PaymentagingComponent implements OnInit {
   constructor(private customerservices: CustomerServices) { }
 
   ngOnInit() {
-    this.customerservices.customerPaymentAging().subscribe(
-      res => {
-        this.paymentagingDetails = res.payaging_data;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    // this.customerservices.customerPaymentAging().subscribe(
+    //   res => {
+    //     this.paymentagingDetails = res.payaging_data;
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // )
+    this.paymentagingDetails = this.customerservices.getPaymentsAging();
   }
 
 }

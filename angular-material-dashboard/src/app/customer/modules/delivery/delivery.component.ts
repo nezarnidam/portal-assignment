@@ -18,16 +18,18 @@ export class DeliveryComponent implements OnInit {
   constructor(private customerservices: CustomerServices, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.customerservices.customerDelivery().subscribe(
-      res => {
-        // this.deliverydata = res.delivery_data;
-        this.Head = res.head;
-        this.Item = res.item;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    // this.customerservices.customerDelivery().subscribe(
+    //   res => {
+    //     // this.deliverydata = res.delivery_data;
+    //     this.Head = res.head;
+    //     this.Item = res.item;
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // )
+    this.Head = this.customerservices.getDeliveryHead();
+    this.Item = this.customerservices.getDeliveryItem();
   }
 
   onClick(value) {

@@ -13,14 +13,15 @@ export class VendorinvoiceComponent implements OnInit {
   constructor(private vendorservice: VendorService) { }
 
   ngOnInit() {
-    this.vendorservice.vendorInvoice().subscribe(
-      res => {
-        this.invoiceData = res.invoice_data;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    // this.vendorservice.vendorInvoice().subscribe(
+    //   res => {
+    //     this.invoiceData = res.invoice_data;
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // )
+    this.invoiceData = this.vendorservice.getInvoice();
   }
 
   onDownload(invNo: string, fisc: string) {

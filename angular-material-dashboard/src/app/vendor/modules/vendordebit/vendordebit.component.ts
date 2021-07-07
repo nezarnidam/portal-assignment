@@ -11,14 +11,15 @@ export class VendordebitComponent implements OnInit {
   constructor(private vendorservice: VendorService) { }
 
   ngOnInit() {
-    this.vendorservice.vendorDebit().subscribe(
-      res => {
-        this.debitData = res.debit_data;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    // this.vendorservice.vendorDebit().subscribe(
+    //   res => {
+    //     this.debitData = res.debit_data;
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // )
+    this.debitData = this.vendorservice.getDebit();
   }
 
 }

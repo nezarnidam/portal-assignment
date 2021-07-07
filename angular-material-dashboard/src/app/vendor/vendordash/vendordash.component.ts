@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { VendorService } from '../vendor.service';
 
+
 @Component({
   selector: 'app-vendordash',
   templateUrl: './vendordash.component.html',
@@ -23,7 +24,17 @@ export class VendordashComponent implements OnInit {
       error => {
         console.log(error);
       }
-    )
+    );
+    this.vendorservice.vendorInit();
+    // this.vendorservice.vendorPO().subscribe(
+    //   (res) => {
+    //     let PoData = res;
+    //     this.vendorservice.setPo(PoData);
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
   }
 
   sideBarToggler() {
@@ -32,19 +43,22 @@ export class VendordashComponent implements OnInit {
 
   }
 
-  intervalId = setInterval(() => {
-    this.vendorservice.vendorPO().subscribe((res) => {
-      let PoData = res;
-      // this.send_notification = this.vendorDataService.po_notify(PoData.length);
-      // if(this.send_notification === true){
-      //   $('.toast').toast({ autohide: false });
-      //   $('.toast').toast('show');
-      // }
-    });
-  }, 5000);
+  // intervalId = setInterval(() => {
+  //   this.vendorservice.vendorPO().subscribe((res) => {
+  //     let PoData = res;
+  //     // alert("interval");
+  //     this.send_notification = this.vendorservice.po_notify(PoData.length);
+  //     if (this.send_notification === true) {
+  //       // $('.toast').toast({ autohide: false });
+  //       // $('.toast').toast('show');
+  //       alert("new po created");
+  //     }
+  //   });
+  // }, 5000);
 
   ngOnDestroy() {
-    clearInterval(this.intervalId);
+    this.vendorservice.clear();
+    //   // clearInterval(this.intervalId);
   }
 
 

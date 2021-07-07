@@ -15,14 +15,15 @@ export class SalesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.customerservice.customerSales().subscribe(
-      res => {
-        this.salesdata = res.sales_data;
-      },
-      error => {
+    // this.customerservice.customerSales().subscribe(
+    //   res => {
+    //     this.salesdata = res.sales_data;
+    //   },
+    //   error => {
 
-      }
-    )
+    //   }
+    // )
+    this.salesdata = this.customerservice.getSales();
   }
 
 }

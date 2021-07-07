@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InquiryitemComponent } from '../../modules/dialog/inquiryitem/inquiryitem.component';
 import { DeliveryitemComponent } from '../../modules/dialog/deliveryitem/deliveryitem.component';
+import { CustomerServices } from '../../customer-services.service';
 
 
 @NgModule({
@@ -75,7 +76,7 @@ import { DeliveryitemComponent } from '../../modules/dialog/deliveryitem/deliver
 
   ],
   providers: [
-
+    CustomerServices
   ]
 })
 export class DefaultModule { }
