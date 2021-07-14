@@ -9,7 +9,7 @@ import { VendorService } from '../vendor.service'
 })
 export class VendorloginComponent implements OnInit {
 
-  vendorid: string = '0000000095';
+  vendorid: string = '10067';
   pass: string = '12345678';
   er: boolean = false;
   angForm: FormGroup;

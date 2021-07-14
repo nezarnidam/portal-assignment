@@ -26,6 +26,13 @@ import { VendorPOComponent } from './vendor/modules/vendor-po/vendor-po.componen
 import { VendorGoodsreceiptComponent } from './vendor/modules/vendor-goodsreceipt/vendor-goodsreceipt.component';
 import { EmployeeloginComponent } from './employee/employeelogin/employeelogin.component';
 import { VendorinvoiceComponent } from './vendor/modules/vendorinvoice/vendorinvoice.component';
+import { EmployeedashComponent } from './employee/employeedash/employeedash.component';
+import { EmployeeprofileComponent } from './employee/modules/employeeprofile/employeeprofile.component';
+import { EmployeeleaveComponent } from './employee/modules/employeeleave/employeeleave.component';
+import { empty } from 'rxjs';
+import { EmployeepayslipComponent } from './employee/modules/employeepayslip/employeepayslip.component';
+import { EmployeesettlementComponent } from './employee/modules/employeesettlement/employeesettlement.component';
+import { EmployeeleavecreateComponent } from './employee/modules/employeeleavecreate/employeeleavecreate.component';
 
 const routes: Routes = [{
   path: '',
@@ -140,7 +147,34 @@ const routes: Routes = [{
       component: VendorinvoiceComponent
     }
   ]
-}];
+},
+{
+  path: 'employee',
+  component: EmployeedashComponent,
+  children: [
+    {
+      path: 'profile',
+      component: EmployeeprofileComponent
+    },
+    {
+      path: 'leave',
+      component: EmployeeleaveComponent
+    },
+    {
+      path: 'createleave',
+      component: EmployeeleavecreateComponent
+    },
+    {
+      path: 'payslip',
+      component: EmployeepayslipComponent
+    },
+    {
+      path: 'settlement',
+      component: EmployeesettlementComponent
+    }
+  ]
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

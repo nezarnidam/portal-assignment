@@ -1,8 +1,18 @@
 <!-- {{Inquiry[0].DOC_NUMBER}} -->
 
+
+
+<div class="form-group col-md-4 fullright">
+    <div class="input-icons">
+        <i class="fa fa-search icon"></i>
+        <input type="text" class="form-control input-field" placeholder="Search" [(ngModel)]="searchedKeyword">
+    </div>
+</div>
+
+
 <div class="a">
     <h2>Credit</h2>
-    <div class="cardholder" *ngFor="let card of creditData; index as i">
+    <div class="cardholder" *ngFor="let card of creditData  | filter:searchedKeyword; index as i">
         <div class="card" id="card{{i}}">
             <!-- <p>SOLD TO{{card.SOLD_TO}}</p> -->
             <!-- <p>MANDT : {{card.MANDT}}</p> -->
@@ -12,8 +22,8 @@
             <p>Posting Date : {{card.BUDAT | date :'dd/MM/yyyy'}}</p>
             <p>Document Date : {{card.BLDAT | date :'dd/MM/yyyy'}}</p>
             <p>Currency : {{card.WAERS}}</p>
-            <p>Amount : {{card.DMBTR | number:'1.3-3'}}</p>
-            <p>Baseline Date : {{card.ZFBDT}}</p>
+            <p>Amount : {{card.DMBTR | number:'1.2-2'}}</p>
+            <p>Baseline Date : {{card.ZFBDT |date :'dd/MM/yyyy'}}</p>
         </div>
     </div>
 </div>

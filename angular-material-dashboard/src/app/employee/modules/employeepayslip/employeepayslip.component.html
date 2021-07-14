@@ -1,0 +1,25 @@
+<!-- {{Inquiry[0].DOC_NUMBER}} -->
+
+<h2>Payslip</h2>
+
+<!-- <i class="fa fa-search icon"></i> -->
+<mat-icon>search</mat-icon>
+<input id="search" type="date" placeholder="Search" [(ngModel)]="searchedKeyword">
+<!-- <label for="search">
+   
+</label> -->
+
+
+<div class="a">
+
+
+    <div class="cardholder" *ngFor="let card of Payslip  | filter:searchedKeyword; index as i">
+        <div class="card" id="card{{i}}">
+            <p>Sequenece Number : {{card.SEQUENCENUMBER|number:'1.0'}}</p>
+            <p>FP Begin : {{card.FPBEGIN | date :'dd/MM/yyyy'}}</p>
+            <p>FP End : {{card.FPEND | date :'dd/MM/yyyy'}}</p>
+            <p>Pay Date : {{card.PAYDATE | date :'dd/MM/yyyy'}}</p>
+            <button mat-raised-button (click)="onDownload(card.SEQUENCENUMBER,card.FISC_YEAR)">Download</button>
+        </div>
+    </div>
+</div>

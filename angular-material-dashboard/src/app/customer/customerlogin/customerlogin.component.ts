@@ -12,7 +12,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class CustomerloginComponent implements OnInit {
 
-  userid: string = '0000111112';
+  userid: string = '11';
   pass: string = '12345678';
   er: boolean = false;
   angForm: FormGroup;

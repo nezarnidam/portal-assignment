@@ -1,0 +1,22 @@
+button{
+    background-color: darkred;
+    color: white;
+  }
+  #submit:enabled{
+    background-color: darkgreen;
+    color: white; 
+  }
+  h2{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    padding-left: 10px;
+  }
+  mat-input,label{
+      margin-left: 20px;
+  }
+ button{
+     margin-left: 20px;
+ }
+ mat-form-field{
+     margin-left: 20px;
+ }

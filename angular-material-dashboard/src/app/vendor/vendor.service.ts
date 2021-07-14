@@ -183,6 +183,7 @@ export class VendorService {
     this.vendorPaymentaging().subscribe(
       res => {
         this.PA = res.paymentaging_data;
+        console.log(this.PA);
       },
       error => {
         console.log(error);

@@ -1,0 +1,46 @@
+:host {
+  
+    .mat-icon {
+      vertical-align: middle;
+      margin-right: 20px;
+    }
+    .profile-card {
+      text-align: center;
+      padding: 0 20px 20px 20px;
+      img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+    // 
+    .mat-button{
+        width: 100%;
+        text-align: left;
+        // font-size: large;
+        // font-size: 18px;
+        font-family: sans-serif;
+        border-radius: 0px;
+        // border-left: solid 7px white;
+        // padding-left: 7px;
+
+    }
+  }
+  .active {
+    background-color:rgba(139, 0, 0, 0.329);
+    //  color: white;
+    
+
+    // border-right: solid 5px  darkred;
+
+    // border-bottom: solid 2px  darkred;
+    border-right:solid 7px  darkred ;
+    // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+    // background-color: darkred;
+    // color: white;
+
+        // color: #000;
+}
+  

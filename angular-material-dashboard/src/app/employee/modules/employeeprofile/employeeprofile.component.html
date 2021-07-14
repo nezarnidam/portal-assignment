@@ -1,0 +1,73 @@
+<div class="view">
+    <h2>Profile </h2>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Employee id</mat-label>
+            <input value="{{employeeDetails.ID|number:'1.0'}}" matInput readonly>
+        </mat-form-field>
+        <button id="edit" mat-raised-button (click)="OnEdit()">{{btn}}</button>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Joining date</mat-label>
+            <input value="{{employeeDetails.JOIN_DATE | date:'dd/MM/yyyy'  }}" matInput readonly>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Position </mat-label>
+            <input [(ngModel)]="employeeDetails.position" matInput readonly>
+        </mat-form-field>
+        <!-- </p>
+    <p> -->
+
+
+        <!-- <button mat-button (click)="OnCancel()" [disabled]="!editing">Cancel</button> -->
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>First name</mat-label>
+            <input [(ngModel)]="employeeDetails.fname" matInput [readonly]="!editing">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Second name </mat-label>
+            <input [(ngModel)]="employeeDetails.sname" matInput [readonly]="!editing">
+        </mat-form-field>
+        <!-- </p>
+    <p> -->
+        <mat-form-field appearance="fill">
+            <mat-label>Street </mat-label>
+            <input [(ngModel)]="employeeDetails.street" matInput [readonly]="!editing">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>city </mat-label>
+            <input [(ngModel)]="employeeDetails.city" matInput [readonly]="!editing">
+        </mat-form-field>
+        <!-- </p>
+    <p> -->
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Country </mat-label>
+            <input [(ngModel)]="employeeDetails.country" matInput [readonly]="!editing">
+        </mat-form-field>
+        <!-- </p>
+    <p> -->
+        <mat-form-field appearance="fill">
+            <mat-label>Post_code </mat-label>
+            <input [(ngModel)]="employeeDetails.postcode" matInput [readonly]="!editing">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Mobile Number </mat-label>
+            <input [(ngModel)]="employeeDetails.telephone" matInput [readonly]="!editing">
+        </mat-form-field>
+    </p>
+    <p> <button id="save" mat-raised-button [disabled]="!editing" (click)="OnSave()">Save</button>
+        <!-- </p>
+
+    <p>  -->
+        <button id="cancel" mat-raised-button [disabled]="!editing" (click)="OnEdit()">Cancel</button>
+    </p>
+
+</div>

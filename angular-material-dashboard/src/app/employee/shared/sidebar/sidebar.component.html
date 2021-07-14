@@ -1,0 +1,42 @@
+<mat-nav-list>
+    <div class=" profile-card">
+        <img src="../../../../assets/images/profilepicture.png" alt=""> <br>
+        <!-- <i> -->
+        <!-- <h4> -->
+        {{user_id | number:'1.0'}}
+        <!-- </h4> -->
+        <!-- </i> -->
+    </div>
+    <mat-divider></mat-divider>
+    <!-- <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Sales data
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/vendor/RFQ">RFQ</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/vendor/PO">Purchase Order</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/vendor/goodsreceipt">Goods receipt</a>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Finance sheet
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/vendor/credit">Credit</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/vendor/debit">Debit</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/vendor/paymentaging">Payment aging</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/vendor/invoice">Invoice</a>
+
+
+    </mat-expansion-panel> -->
+    <button mat-button [ngClass]="{'active': componentActive === 1}" (click)="onLeave()">Leave Details</button>
+    <!-- <button mat-button [ngClass]="{'active': componentActive === 2}" (click)="onLeave()">Create Leave</button> -->
+    <button mat-button [ngClass]="{'active': componentActive === 2}" (click)="onPayslip()">Payslip</button>
+    <button *ngIf="resigned" mat-button [ngClass]="{'active': componentActive === 3}" (click)="onSettlement()">Final
+        Settlement</button>
+
+</mat-nav-list>

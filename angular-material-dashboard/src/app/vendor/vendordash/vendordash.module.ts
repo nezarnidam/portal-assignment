@@ -18,6 +18,9 @@ import { GritemComponent } from '../modules/dialog/gritem/gritem.component';
 import { POitemComponent } from '../modules/dialog/poitem/poitem.component';
 import { RFQitemComponent } from '../modules/dialog/rfqitem/rfqitem.component';
 import { VendorinvoiceComponent } from '../modules/vendorinvoice/vendorinvoice.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+
 @NgModule({
   declarations: [
     VendordashComponent,
@@ -51,7 +54,8 @@ import { VendorinvoiceComponent } from '../modules/vendorinvoice/vendorinvoice.c
     MatButtonModule,
     FormsModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    Ng2SearchPipeModule
   ]
 })
 export class VendordashModule { }

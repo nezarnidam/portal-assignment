@@ -12,9 +12,9 @@
 
             <p>Company Code : {{card.COMP_CODE}}</p>
             <p>Currency : {{card.CURRENCY}}</p>
-            <p>Gross Amount : {{card.GROSS_AMNT | number : '1.3-3'}}</p>
+            <p>Gross Amount : {{card.GROSS_AMNT | number : '1.2-2'}}</p>
             <p>Invoice Status : {{card.INVOICE_STATUS}}</p>
-            <button mat-button (click)="onDownload(card.INV_DOC_NO,card.FISC_YEAR)">Download</button>
+            <button mat-raised-button (click)="onDownload(card.INV_DOC_NO,card.FISC_YEAR)">Download</button>
         </div>
     </div>
 </div>

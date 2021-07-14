@@ -1,0 +1,232 @@
+<!-- <h2>Full and Final Settlement Statement
+</h2>
+
+
+
+<mat-form-field appearance="fill">
+    <mat-label>emp Id</mat-label>
+    <input value="{{fullandFinalData.EMPID}}" matInput readonly>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input value="{{fullandFinalData.FNAME}}" matInput readonly>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input value="{{fullandFinalData.LNAME}}" matInput readonly>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Joining Date</mat-label>
+    <input value="{{fullandFinalData.JOINING_DATE}}" matInput readonly>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Leaving Date</mat-label>
+    <input value="{{fullandFinalData.LEAVING_DATE}}" matInput readonly>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Tenure</mat-label>
+    <input value="{{fullandFinalData.TENURE_PERIOD}}" matInput readonly>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Job</mat-label>
+    <input value="{{fullandFinalData.JOB}}" matInput readonly>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Department</mat-label>
+    <input value="{{fullandFinalData.DEPARTMENT}}" matInput readonly>
+</mat-form-field>
+Joining Date: {{fullandFinalData.JOINING_DATE }}<br>
+Leaving Date: {{fullandFinalData.LEAVING_DATE}}<br>
+Tenure: {{fullandFinalData.TENURE_PERIOD}}<br>
+Job: {{fullandFinalData.JOB}}<br>
+Department: {{fullandFinalData.DEPARTMENT}}<br>
+Division: {{fullandFinalData.DIVISION}}<br>
+Comp Code: {{fullandFinalData.COMPANYCODE}}<br>
+Company Date: {{fullandFinalData.COMPANY}}<br>
+Cost Center: {{fullandFinalData.COSTCENTER}}<br>
+Cost Center Desc: {{fullandFinalData.COSTCENTRE_DESC}}<br>
+Approved By: {{fullandFinalData.APPROVER}}
+<br><br>
+<table>
+    <thead>
+        <tr>
+            <th class="wagetype">Wage Type</th>
+            <th class="wagetypedesc">Description</th>
+            <th class="currency">Currency</th>
+            <th class="amount">Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of ppwlaData; let i = index ">
+            <td class="wagetype">{{data.WAGE_TYPE}}</td>
+            <td class="wagetypedesc">{{wagetype[i].NAMEOFWAGETYPE}}</td>
+            <td class="currency">{{data.CURRENCY}}</td>
+            <td class="amount">{{data.AMOUNT}}</td>
+        </tr>
+    </tbody>
+</table>
+<br><br>
+
+
+Gross Salary: {{fullandFinalData.GROSS_SAL}} {{fullandFinalData.CURRENCY}} <br>
+Additional Pay: {{fullandFinalData.ADDITIONAL_PAY}} {{fullandFinalData.CURRENCY}} <br>
+Deduction: {{fullandFinalData.DEDUCT_AMT}} {{fullandFinalData.CURRENCY}} <br>
+
+Net Salary: {{fullandFinalData.NET_SAL}} {{fullandFinalData.CURRENCY}} -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <p>employee-fullandfinal works!</p> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Full and Final Settlement</title>
+</head>
+<br>
+<!-- <h4 style="text-align:center; color: #171717; background-color: #f3f3f3;">Final Settlement</h4> -->
+
+<body style="border: #f3f3f3;">
+    <div *ngIf="!errorMsg">
+        <main>
+            <h1 class="clearfix" style="color: #171717;">Full and Final Settlement Statement
+                <div *ngIf="loadingBar" class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only" id="loading"></span>
+                    </div>
+                </div>
+            </h1>
+            <br>
+            <div id="details" class="clearfix">
+                <div id="project">
+                    <div class="arrow">
+                        <div class="inner-arrow"><span class="abc">Emp ID</span>{{fullandFinalData.EMPID}}</div>
+                    </div>
+                    <div class="arrow">
+                        <div class="inner-arrow"><span class="abc">First Name</span>{{fullandFinalData.FNAME}}</div>
+                    </div>
+                    <div class="arrow">
+                        <div class="inner-arrow"><span class="abc">Last Name</span>{{fullandFinalData.LNAME}}</div>
+                    </div>
+                </div>
+
+                <div id="company">
+                    <div class="arrow back">
+                        <div class="inner-arrow">{{fullandFinalData.JOINING_DATE}}<span class="abc">Joining Date</span>
+                        </div>
+                    </div>
+                    <div class="arrow back">
+                        <div class="inner-arrow">{{fullandFinalData.LEAVING_DATE}}<span class="abc">Leaving Date</span>
+                        </div>
+                    </div>
+                    <div class="arrow back">
+                        <div class="inner-arrow">{{fullandFinalData.TENURE_PERIOD}}<span class="abc">Tenure</span></div>
+                    </div>
+
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <br><br>
+            <div id="details" class="clearfix">
+                <div id="project">
+                    <div class="arrow">
+                        <div class="inner-arrow"><span class="abc">Job</span>{{fullandFinalData.JOB}}</div>
+                    </div>
+                    <div class="arrow">
+                        <div class="inner-arrow"><span class="abc">Department</span>{{fullandFinalData.DEPARTMENT}}
+                        </div>
+                    </div>
+                    <div class="arrow">
+                        <div class="inner-arrow"><span class="abc">Division</span>{{fullandFinalData.DIVISION}}</div>
+                    </div>
+                </div>
+                <div id="company">
+                    <div class="arrow back">
+                        <div class="inner-arrow">{{fullandFinalData.COMPANYCODE}}<span class="abc">Comp Code</span>
+                        </div>
+                    </div>
+                    <div class="arrow back">
+                        <div class="inner-arrow">{{fullandFinalData.COMPANY}}<span class="abc">Company Date</span></div>
+                    </div>
+                    <div class="arrow back">
+                        <div class="inner-arrow">{{fullandFinalData.COSTCENTER}}<span class="abc">Cost Center</span>
+                        </div>
+                    </div>
+                    <div class="arrow back">
+                        <div class="inner-arrow">{{fullandFinalData.COSTCENTRE_DESC}}<span class="abc">Cost Center
+                                Desc</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- <mat-divider></mat-divider> -->
+            <div id="details" class="clearfix">
+                <div id="project">
+                    <div class="arrow">
+                        <div class="inner-arrow"><span class="abc">Approved By</span>{{fullandFinalData.APPROVER}}</div>
+                    </div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <br><br>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="wagetype">Wage Type</th>
+                        <th class="wagetypedesc">Description</th>
+                        <th class="currency">Currency</th>
+                        <th class="amount">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of ppwlaData; let i = index ">
+                        <td class="wagetype">{{data.WAGE_TYPE}}</td>
+                        <td class="wagetypedesc">{{wagetype[i].NAMEOFWAGETYPE}}</td>
+                        <td class="currency">{{data.CURRENCY}}</td>
+                        <td class="amount">{{data.AMOUNT}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br><br>
+            <mat-divider></mat-divider>
+            <div id="details" class="clearfix">
+                <div id="company">
+                    <div class="arrow back">
+                        <div class="inner-arrow">{{fullandFinalData.GROSS_SAL}} {{fullandFinalData.CURRENCY}}<span
+                                class="abc">Gross Salary</span></div>
+                    </div>
+                    <div class="arrow back">
+                        <div class="inner-arrow">{{fullandFinalData.ADDITIONAL_PAY}} {{fullandFinalData.CURRENCY}}<span
+                                class="abc">Additional Pay</span></div>
+                    </div>
+                    <div class="arrow back">
+                        <div class="inner-arrow">{{fullandFinalData.DEDUCT_AMT}} {{fullandFinalData.CURRENCY}}<span
+                                class="abc">Deduction</span></div>
+                    </div>
+                    <div class="arrow back">
+                        <div class="inner-arrow">{{fullandFinalData.NET_SAL}} {{fullandFinalData.CURRENCY}}<span
+                                class="abc">Net Salary</span></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            This Final Settlement copy is created on a computer and is not valid without the signature and seal. Please
+            Contact HR for original copy.
+        </footer>
+    </div>
+
+</body>
+
+</html>

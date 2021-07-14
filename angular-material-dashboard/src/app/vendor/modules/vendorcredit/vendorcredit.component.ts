@@ -8,6 +8,7 @@ import { VendorService } from '../../vendor.service';
 })
 export class VendorcreditComponent implements OnInit {
   creditData: any = [];
+  searchedKeyword: string;
   constructor(private vendorservice: VendorService) { }
 
   ngOnInit() {

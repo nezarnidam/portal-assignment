@@ -30,12 +30,12 @@
             <mat-form-field appearance="outline">
 
                 <mat-label>Employee id</mat-label>
-                <input matInput placeholder="enter employee id" formControlName="empid">
+                <input [(ngModel)]="employeeid" matInput placeholder="enter employee id" formControlName="empid">
             </mat-form-field>
             <br>
             <mat-form-field appearance="outline">
                 <mat-label>password</mat-label>
-                <input matInput placeholder="enter password" type="password" formControlName="pass">
+                <input [(ngModel)]="pass" matInput placeholder="enter password" type="password" formControlName="pass">
             </mat-form-field>
             <br>
             <!-- style="background-color: white; color: darkred; height: 15px; width: 180px;" -->

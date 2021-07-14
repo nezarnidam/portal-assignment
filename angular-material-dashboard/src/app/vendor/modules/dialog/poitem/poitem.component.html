@@ -11,7 +11,7 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="SHORT_TEXT">
-        <th mat-header-cell *matHeaderCellDef> Short Text</th>
+        <th mat-header-cell *matHeaderCellDef> Description</th>
         <td mat-cell *matCellDef="let element"> {{element.SHORT_TEXT}} </td>
     </ng-container>
 
@@ -29,7 +29,7 @@
 
     <ng-container matColumnDef="NET_PRICE">
         <th mat-header-cell *matHeaderCellDef> Net Price </th>
-        <td mat-cell *matCellDef="let element"> {{element.NET_PRICE | number:'1.3-3'}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.NET_PRICE | number:'1.2-2'}} </td>
     </ng-container>
 
 

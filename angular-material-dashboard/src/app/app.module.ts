@@ -17,6 +17,16 @@ import { VendordashModule } from './vendor/vendordash/vendordash.module';
 import { EmployeeloginComponent } from './employee/employeelogin/employeelogin.component';
 import { VendorinvoiceComponent } from './vendor/modules/vendorinvoice/vendorinvoice.component';
 import { SelfComponent } from './self/self.component';
+import { EmployeedashComponent } from './employee/employeedash/employeedash.component';
+import { EmployeedashModule } from './employee/employeedash/employeedash.module';
+import { FooterComponent } from './employee/shared/footer/footer.component';
+import { HeaderComponent } from './employee/shared/header/header.component';
+import { SidebarComponent } from './employee/shared/sidebar/sidebar.component';
+import { EmployeeprofileComponent } from './employee/modules/employeeprofile/employeeprofile.component';
+import { EmployeeleaveComponent } from './employee/modules/employeeleave/employeeleave.component';
+import { EmployeepayslipComponent } from './employee/modules/employeepayslip/employeepayslip.component';
+import { EmployeesettlementComponent } from './employee/modules/employeesettlement/employeesettlement.component';
+import { EmployeeleavecreateComponent } from './employee/modules/employeeleavecreate/employeeleavecreate.component';
 // import { HttpClient } from '@angular/common/http';
 // import { ProfileComponent } from './customer/modules/profile/profile.component';
 // import { InquiryComponent } from './customer/modules/inquiry/inquiry.component';
@@ -56,6 +66,17 @@ import { SelfComponent } from './self/self.component';
 
 
 
+
+
+
+
+
+
+
+
+
+
+
   ],
   entryComponents: [
     SelfComponent
@@ -78,7 +99,8 @@ import { SelfComponent } from './self/self.component';
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EmployeedashModule
   ],
   providers: [CustomerAuthService],
   bootstrap: [AppComponent]

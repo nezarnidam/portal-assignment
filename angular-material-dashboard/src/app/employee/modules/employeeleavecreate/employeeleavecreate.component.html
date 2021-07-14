@@ -1,0 +1,54 @@
+<h2>Create Leave</h2>
+<form [formGroup]="angForm" ngNativevalidate>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Employee </mat-label>
+            <input matInput value="{{employee.empid}}" readonly>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Leave Type</mat-label>
+            <mat-select [(ngModel)]="employee.leaveType" formControlName="type">
+                <mat-option *ngFor="let type of leave" [value]="type.AWART">
+                    {{type.AWART}} - {{type.ATEXT }}
+                </mat-option>
+            </mat-select>
+
+        </mat-form-field>
+
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Start Date</mat-label>
+            <input type="date" [(ngModel)]="employee.startDate" matInput formControlName="startDate">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>End Date</mat-label>
+            <input type="date" [(ngModel)]="employee.endDate" matInput formControlName="endDate">
+        </mat-form-field>
+        <!-- </p>
+    <p> -->
+        <label for="startTime">Start Time</label>
+        <input type="time" [(ngModel)]="employee.startTime" min="00:00:00" max="23:59:59" formControlName="startTime">
+        <label for="endTime">End Time</label>
+        <input type="time" [(ngModel)]="employee.endTime" min="00:00:00" max="23:59:59" formControlName="endTime">
+    </p>
+    <p>
+        <!-- <input type="time" id="appt" name="appt" min="09:00:00" max="18:00:00" required> -->
+        <!-- <mat-form-field appearance="fill"> -->
+        <!-- <mat-label>End Date</mat-label> -->
+
+
+        <!-- </mat-form-field> -->
+        <mat-form-field appearance="fill">
+            <mat-label>Total Hours</mat-label>
+            <input type="number" [(ngModel)]="employee.hours" matInput formControlName="hours">
+        </mat-form-field>
+    </p>
+    <button id="submit" mat-raised-button (click)=" onSubmit()" [disabled]=angForm.invalid> Submit
+    </button>
+
+    <button mat-raised-button (click)="onCancel()">cancel</button>
+
+</form>

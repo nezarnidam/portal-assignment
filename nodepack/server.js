@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.raw());
 customerid = -1;
 vendorid = -1;
+employeeid = -1;
 const sampleHeaders = {
     'user-agent': 'sampleTest',
     'Content-Type': 'text/xml;charset=UTF-8',
@@ -291,6 +292,9 @@ const custInq_res = async (cid) => {
         const inq_head = resData.INQ_HEAD.item;
         const inq_item = resData.INQ_ITEM.item;
         ret = 'S';
+        if (inq_head == undefined || inq_item == undefined) {
+            ret = 'E';
+        }
         return [inq_head, inq_item, ret];
     }
     catch (err) {
@@ -302,8 +306,8 @@ const custInq_res = async (cid) => {
 app.post('/customerInquiry', (req, res) => {
 
     // cid = req.body.customer_id;
-    // cid = customerid;
-    cid = 18;
+    cid = customerid;
+    // cid = 18;
     let prom = custInq_res(cid);
     let Head = [];
     let Item = [];
@@ -351,7 +355,7 @@ const custSal_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/CUSTOMERSAL
 const custSal_req = (cid) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
    <ns0:ZBAPI_CUST_SALESORDER_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
-      <CUST_ID>11</CUST_ID>
+      <CUST_ID>${cid}</CUST_ID>
    </ns0:ZBAPI_CUST_SALESORDER_NZ>`;
     return xml;
 }
@@ -408,7 +412,7 @@ const custDeliv_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/CUSTOMERD
 const custDeliv_req = (cid) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
    <ns0:ZBAPI_CUST_DELIVERY_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
-      <CUST_ID>11</CUST_ID>
+      <CUST_ID>${cid}</CUST_ID>
    </ns0:ZBAPI_CUST_DELIVERY_NZ>`;
     return xml;
 }
@@ -488,7 +492,7 @@ const custCredit_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/CUSTOMER
 const custCredit_req = (cid) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
    <ns0:ZBAPI_CUST_CREDIT_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
-      <CUST_ID>1</CUST_ID>
+      <CUST_ID>${cid}</CUST_ID>
    </ns0:ZBAPI_CUST_CREDIT_NZ>`;
     return xml;
 }
@@ -556,7 +560,7 @@ const custDebit_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/CUSTOMERD
 const custDebit_req = (cid) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
    <ns0:ZBAPI_CUST_DEBIT_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
-      <CUST_ID>1</CUST_ID>
+      <CUST_ID>${cid}</CUST_ID>
    </ns0:ZBAPI_CUST_DEBIT_NZ>`;
     return xml;
 }
@@ -622,7 +626,7 @@ const custPayag_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/CUSTOMERP
 const custPayag_req = (cid) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
    <ns0:ZBAPI_CUST_PAYAGING_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
-      <CUST_ID>11</CUST_ID>
+      <CUST_ID>${cid}</CUST_ID>
    </ns0:ZBAPI_CUST_PAYAGING_NZ>`;
     return xml;
 }
@@ -898,7 +902,7 @@ const vendorRFQ_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDORRFQ
 const vendorRFQ_xml = (vendor) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <ns0:ZBAPI_VENDOR_RFQ_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
-       <VENDORID>10036</VENDORID>
+       <VENDORID>${vendor}</VENDORID>
     </ns0:ZBAPI_VENDOR_RFQ_NZ>`;
     return xml;
 }
@@ -912,7 +916,12 @@ const vendorRFQ = async (vendor) => {
         resData = body;
         const rfq_head = resData.IT_HEAD.item;
         const rfq_item = resData.IT_ITEM.item;
+
+
         ret = 'S';
+        if (rfq_head == undefined || rfq_item == undefined) {
+            ret = 'E';
+        }
         return [rfq_head, rfq_item, ret];
     }
     catch (err) {
@@ -971,7 +980,7 @@ const vendorPO_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDORPONZ
 const vendorPO_xml = (vendor) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <ns0:ZBAPI_VENDOR_PO_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
-       <VENDORID>10036</VENDORID>
+       <VENDORID>${vendor}</VENDORID>
     </ns0:ZBAPI_VENDOR_PO_NZ>`;
     return xml;
 }
@@ -984,6 +993,9 @@ const vendorPO = async (vendor) => {
         const head = data.IT_HEAD.item;
         const item = data.IT_ITEM.item;
         ret = 'S';
+        if (head == undefined || item == undefined) {
+            ret = 'E';
+        }
         return [head, item, ret];
 
     }
@@ -1037,7 +1049,7 @@ const vendorGoodsreceipt_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/
 const vendorGoodsreceipt_xml = (vendor) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <ns0:ZBAPI_VENDOR_GOODS_RECEIPT_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
-       <VENDORID>10036</VENDORID>
+       <VENDORID>${vendor}</VENDORID>
     </ns0:ZBAPI_VENDOR_GOODS_RECEIPT_NZ>`;
     return xml;
 }
@@ -1050,6 +1062,9 @@ const vendorGoodsreceipt = async (vendor) => {
         const head = data.IT_HEAD.item;
         const item = data.IT_ITEM.item;
         ret = 'S';
+        if (head == undefined || item == undefined) {
+            ret = 'E';
+        }
         return [head, item, ret];
 
     }
@@ -1109,7 +1124,7 @@ const vendorCredit_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDOR
 const vendorCredit_xml = (vid) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <ns0:ZBAPI_VENDOR_CREDIT_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
-       <VENDORID>10067</VENDORID>
+       <VENDORID>${vid}</VENDORID>
     </ns0:ZBAPI_VENDOR_CREDIT_NZ>`;
     return xml;
 }
@@ -1174,7 +1189,7 @@ const vendorDebit_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDORD
 const vendorDebit_xml = (vendor) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <ns0:ZBAPI_VENDOR_DEBIT_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
-       <VENDORID>10067</VENDORID>
+       <VENDORID>${vendor}</VENDORID>
     </ns0:ZBAPI_VENDOR_DEBIT_NZ>`;
     return xml;
 }
@@ -1237,7 +1252,7 @@ const vendorPaymentaging_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/
 const vendorPaymentaging_xml = (vendor) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <ns0:ZBAPI_VENDOR_PAY_AGE_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
-       <VENDORID>10036</VENDORID>
+       <VENDORID>${vendor}</VENDORID>
     </ns0:ZBAPI_VENDOR_PAY_AGE_NZ>`;
     return xml;
 }
@@ -1310,7 +1325,7 @@ const vendorInvoice_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/VENDO
 const vendorInvoice_xml = (vendor) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <ns0:ZBAPI_VENDOR_INV_DISP_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
-       <VENDORID>10036</VENDORID>
+       <VENDORID>${vendor}</VENDORID>
     </ns0:ZBAPI_VENDOR_INV_DISP_NZ>`;
     return xml;
 }
@@ -1413,6 +1428,511 @@ app.post('/vendorInvoicePdf', (req, res) => {
 })
 
 
+
+//EMPLOYEE
+// Employee LOGIN ENDS
+
+const employeeLogin_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/EMPLOGINNZ';
+const employeeLogin_xml = (employee, password) => {
+
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_EMP_LOGIN_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <EMP_ID>${employee}</EMP_ID>
+       <EMP_PASS>${password}</EMP_PASS>
+    </ns0:ZBAPI_EMP_LOGIN_NZ>`;
+
+    return xml;
+}
+
+const employeelogin = async (employee, password) => {
+    let resData;
+    const { response } = await soapRequest({ url: employeeLogin_url, headers: sampleHeaders, xml: employeeLogin_xml(employee, password), timeout: 10000 }); // Optional timeout parameter(milliseconds)
+    const { headers, body, statusCode } = response;
+
+    resData = body.RETURN;
+
+    return resData;
+};
+
+app.post('/employeeLogin', (req, res) => {
+
+    employee = req.body.empid;
+    password = req.body.password;
+    console.log(employee, password);
+    let prom = employeelogin(employee, password);
+    prom.then((dat) => {
+        // console.log(vendor);
+        // console.log(dat);
+        if (dat.TYPE == 'S') {
+            global.employeeid = employee;
+            // console.log(vendor);
+        }
+        res.send(dat);
+    });
+})
+
+
+
+//GET EMPLOYEE ID
+app.post('/getEmployeeid', (req, res) => {
+    // console.log("id -- " + vendorid);
+    res.send({ employee_id: employeeid });
+})
+
+
+//EMPLOYEE AUTHORIZATION
+
+app.post('/employeeLoggedin', (req, res) => {
+    if (employeeid == -1) {
+        res.send({ status: 'no' });
+    } else {
+        res.send({ status: 'yes' });
+    }
+})
+
+//EMPLOYEE SIGN OUT
+
+app.post('/employeeSignout', (req, res) => {
+    employeeid = -1;
+    console.log("sign out");
+    res.send({ status: 'successfully logged out' });
+})
+
+// EMPLOYEE PROFILE
+
+const employeeProfile_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/EMPPROFILENZ';
+const employeeProfile_xml = (employee) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_EMP_PROFILE_VIEW_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <EMP_ID>${employee}</EMP_ID>
+    </ns0:ZBAPI_EMP_PROFILE_VIEW_NZ>`;
+    return xml;
+}
+
+const employeeProfile = async (employee) => {
+    let resultData;
+    let ret;
+    const { response } = await soapRequest({ url: employeeProfile_url, headers: sampleHeaders, xml: employeeProfile_xml(employee), timeout: 10000 }); // Optional timeout parameter(milliseconds)
+    const { headers, body, statusCode } = response;
+    resultData = response.body.EMPLOYEE_DATA.item;
+    ret = response.body.RETURN;
+    return [resultData, ret];
+    // if(resData.RETURN.TYPE=='E')
+
+}
+
+app.post('/employeeProfile', (req, res) => {
+    const employee = employeeid;
+    // console.log('employee-' + employee);
+    let prom = employeeProfile(employee);
+    prom.then(([resData, ret]) => {
+        //  if(ret.TYPE!='E'){
+        //  }
+        // console.log(resData);
+        res.send(resData);
+    });
+})
+
+
+//employee PROFILE EDIT
+
+const employeeProfileedit_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/EMPPROFILEEDITNZ';
+const employeeProfileedit_xml = (employee) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_EMP_PROFILE_EDIT_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <CITY>${employee.city}</CITY>
+       <COUNTRY>${employee.country}</COUNTRY>
+       <DOB></DOB>
+       <EMP_ID>${employee.ID}</EMP_ID>
+       <FIRSTNAME>${employee.fname}</FIRSTNAME>
+       <LASTNAME>${employee.sname}</LASTNAME>
+       <PINCODE>${employee.postcode}</PINCODE>
+       <STREET>${employee.street}</STREET>
+       <TELEPHONE>${employee.telephone}</TELEPHONE>
+       <TITLE></TITLE>
+    </ns0:ZBAPI_EMP_PROFILE_EDIT_NZ>`
+    return xml;
+}
+
+const employeeProfileedit = async (employee) => {
+    const { response } = await soapRequest({ url: employeeProfileedit_url, headers: sampleHeaders, xml: employeeProfileedit_xml(employee), timeout: 10000 });
+    const { headers, body, statusCode } = response;
+    resData = body.RETURN.TYPE;
+    return resData;
+}
+
+app.post('/employeeProfileedit', (req, res) => {
+    employee = req.body.data;
+    // let employee = req.body.DATA;
+    // console.log("employee data collected " + employee);
+    let prom = employeeProfileedit(employee);
+    prom.then(data => {
+        if (data == 'S') {
+            res.send({ edit_status: 'Successfully Updated' });
+        }
+        else {
+            res.send({ edit_status: 'Update unsuccessful' });
+        }
+    });
+})
+
+
+
+//employee leave
+
+const employeeLeave_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/EMPLEAVENZ';
+const employeeLeave_xml = (employee) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_EMP_LEAVE_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <EMP_ID>${employee}</EMP_ID>
+    </ns0:ZBAPI_EMP_LEAVE_NZ>`
+    return xml;
+}
+
+const employeeLeave = async (employee) => {
+    const { response } = await soapRequest({ url: employeeLeave_url, headers: sampleHeaders, xml: employeeLeave_xml(employee), timeout: 10000 });
+    const { headers, body, statusCode } = response;
+    ret = body.RETURN.TYPE;
+    abs = body.IT_ABSENCE.item;
+    rem = body.IT_REMAINING.item;
+    return [ret, abs, rem];
+}
+
+app.post('/employeeLeave', (req, res) => {
+    employee = employeeid;
+    // let employee = req.body.DATA;
+    // console.log("employee data collected " + employee);
+    let prom = employeeLeave(employee);
+    Leavearr = [];
+    Remearr = [];
+    prom.then(([ret, abs, rem]) => {
+        if (ret != 'E') {
+            abs.forEach(element => {
+                if (element.ABSENCETYPE != '') {
+                    let obj = `{ 
+                    "SUBTYPE": "${element.SUBTYPE}",
+                    "VALIDEND": "${element.VALIDEND}",
+                    "VALIDBEGIN": "${element.VALIDBEGIN}",
+                    "ABSENCETYPE": "${element.ABSENCETYPE}", 
+                    "NAMEOFABSENCETYPE": "${element.NAMEOFABSENCETYPE}",
+                    "ABSENCEDAYS":   "${element.ABSENCEDAYS}",
+                    "ABSENCEHOURS": "${element.ABSENCEHOURS}"
+                  }`;
+                    Leavearr.push(JSON.parse(obj));
+                }
+            });
+            // rem.forEach(element => {
+            //     let obj = `{ 
+            //         "QUOTATYPE": "${element.QUOTATYPE}",
+            //         "LEAVETYPE": "${element.LEAVETYPE}",
+            //         "QUOTATEXT": "${element.QUOTATEXT}",
+            //         "QUOTAEND": "${element.QUOTAEND}", 
+            //         "QUOTABEG": "${element.QUOTABEG}",
+            //         "ENTITLE": "${element.ENTITLE}",
+            //         "DEDUCT": "${element.DEDUCT}",
+            //         "ORDERED": "${element.ORDERED}",
+            //         "QUOTANUM": "${element.QUOTANUM}",
+            //         "TIUNITEXT": "${element.TIUNITEXT}"
+            //       }`;
+            //     Remearr.push(JSON.parse(obj));
+            // });
+            res.status(200).send({ Leave: Leavearr });
+            // console.log("array: " + arr);
+        }
+        else {
+            res.status(401).send("No data available");
+        }
+
+    });
+})
+
+
+//employee LeaveType
+
+const employeeLeaveType_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/EMPLEAVETYPENZ';
+const employeeLeaveType_xml = (employee) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_EMP_LEAVE_TYPE_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <EMP_ID>${employee}</EMP_ID>
+    </ns0:ZBAPI_EMP_LEAVE_TYPE_NZ>`
+    return xml;
+}
+
+const employeeLeaveType = async (employee) => {
+    const { response } = await soapRequest({ url: employeeLeaveType_url, headers: sampleHeaders, xml: employeeLeaveType_xml(employee), timeout: 10000 });
+    const { headers, body, statusCode } = response;
+    result = body.IT_TYPES.item;
+    ret = body.RETURN.TYPE;
+    return [result, ret];
+}
+
+app.post('/employeeLeaveType', (req, res) => {
+    employee = employeeid;
+    // let employee = req.body.DATA;
+    // console.log("employee data collected " + employee);
+    arr = [];
+    let prom = employeeLeaveType(employee);
+    prom.then(([result, ret]) => {
+        if (ret == 'S') {
+            result.forEach(elm => {
+                let obj = `{ 
+                    "MOABW": "${elm.MOABW}",
+                    "AWART": "${elm.AWART}",
+                    "ATEXT": "${elm.ATEXT}"
+                  }`;
+                arr.push(JSON.parse(obj));
+
+            });
+            res.status(200).send({ leave: arr });
+        }
+        else {
+            res.status(401).send("unavailable");
+        }
+    });
+})
+
+// Employee leave create
+
+const employeeLeaveCreate_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/EMPLEAVECREATENZ';
+const employeeLeaveCreate_xml = (employee) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_EMP_LEAVE_CREATE_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <EMP_ID>${employee.empid}</EMP_ID>
+       <END_DATE>${employee.endDate}</END_DATE>
+       <END_TIME>${employee.endTime}</END_TIME>
+       <LEAVE_TYPE>${employee.leaveType}</LEAVE_TYPE>
+       <START_DATE>${employee.startDate}</START_DATE>
+       <START_TIME>${employee.startTime}</START_TIME>
+       <TOTAL_HOURS>${employee.hours}</TOTAL_HOURS>
+    </ns0:ZBAPI_EMP_LEAVE_CREATE_NZ>`
+    return xml;
+}
+
+const employeeLeaveCreate = async (employee) => {
+    const { response } = await soapRequest({ url: employeeLeaveCreate_url, headers: sampleHeaders, xml: employeeLeaveCreate_xml(employee), timeout: 10000 });
+    const { headers, body, statusCode } = response;
+    resData = body.RETURN.TYPE;
+    return resData;
+}
+
+app.post('/employeeLeaveCreate', (req, res) => {
+    employee = req.body.data;
+    console.log(employee);
+    // let employee = req.body.DATA;
+    // console.log("employee data collected " + employee);
+    let prom = employeeLeaveCreate(employee);
+    prom.then(data => {
+        if (data == 'S') {
+            res.send({ status: 'Successful' });
+        }
+        else {
+            res.send({ status: 'Unsuccessful' });
+        }
+    });
+})
+
+//EMPLOYEE PAYSLIP
+const employeePayslip_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/EMPPAYSLIPNZ';
+const employeePayslip_xml = (employee) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_EMP_PAYSLIP_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <EMP_ID>${employee}</EMP_ID>
+    </ns0:ZBAPI_EMP_PAYSLIP_NZ>`;
+    return xml;
+}
+employeePayslip = async (employee) => {
+    let resData;
+    const { response } = await soapRequest({ url: employeePayslip_url, headers: sampleHeaders, xml: employeePayslip_xml(employee), timeout: 10000 }); // Optional timeout parameter(milliseconds)
+    const { headers, body, statusCode } = response;
+    ret = body.RETURN.TYPE;
+    Data = body.IT_TABLE.item;
+    return [Data, ret];
+}
+
+
+app.post('/employeePayslip', (req, res) => {
+
+    employee = employeeid;
+    let prom = employeePayslip(employee);
+    let arr = [];
+    // console.log("works");
+    prom.then(([data, ret]) => {
+        if (ret != 'E') {
+            // console.log("inside if")
+            data.forEach((elm) => {
+                let obj = `{ 
+                       "SEQUENCENUMBER": "${elm.SEQUENCENUMBER}",
+                       "FPBEGIN": "${elm.FPBEGIN}",
+                       "FPEND": "${elm.FPEND}",
+                       "PAYDATE": "${elm.PAYDATE}"
+                     }`;
+                arr.push(JSON.parse(obj));
+            })
+            res.status(200).send({ payslip: arr });
+            // console.log("array: " + arr);
+        }
+        else {
+            res.status(401).send("No data available");
+        }
+    });
+})
+
+//EMPLOYEE PAYSLIP PDF
+
+const employeePayslipPdf_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/EMPPAYSLIPPDFNZ';
+const employeePayslipPdf_xml = (employee, seqno, variant) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_EMP_PAYSLIP_PDF_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <EMP_ID>${employee}</EMP_ID>
+       <SEQ_NO>${seqno}</SEQ_NO>
+       <VARIANT>${variant}</VARIANT>
+    </ns0:ZBAPI_EMP_PAYSLIP_PDF_NZ>`;
+    return xml;
+}
+employeePayslipPdf = async (employee, seqno, variant) => {
+    let resData;
+    const { response } = await soapRequest({ url: employeePayslipPdf_url, headers: sampleHeaders, xml: employeePayslipPdf_xml(employee, seqno, variant), timeout: 10000 }); // Optional timeout parameter(milliseconds)
+    const { headers, body, statusCode } = response;
+
+
+    resData = body.PDF.item;
+    return resData;
+}
+
+
+app.post('/employeePayslipPdf', (req, res) => {
+
+    employee = employeeid;
+    seqno = req.body.seqno;
+    variant = 'RAMACO_PAYSLIP';
+    console.log(seqno);
+    console.log(variant);
+    let prom = employeePayslipPdf(employee, seqno, variant);
+
+    prom.then((dat) => {
+        let obj = `{"PDF": "${dat}"}`;
+
+        obj = JSON.parse(obj);
+        res.status(200).send(obj);
+
+    });
+
+})
+
+
+
+
+// START OF EMPLOYEE FULL AND FINAL
+const employeeFullandFinal_url = 'http://dxktpipo.kaarcloud.com:50000/RESTAdapter/EMPFINALSETTLEMENTNZ';
+const employeeFullandFinal_xml = (employee) => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+    <ns0:ZBAPI_EMP_FINAL_SETTLEMENT_NZ xmlns:ns0="urn:sap-com:document:sap:rfc:functions">
+       <EMP_ID>${employee}</EMP_ID>
+    </ns0:ZBAPI_EMP_FINAL_SETTLEMENT_NZ>`;
+    return xml;
+}
+
+const employeeFullandFinal = async (employee) => {
+    let resData, ret, fullandFinalData, ppbwla, wagetype;
+
+    try {
+
+        const { response } = await soapRequest({ url: employeeFullandFinal_url, headers: sampleHeaders, xml: employeeFullandFinal_xml(employee), timeout: 10000 }); // Optional timeout parameter(milliseconds)
+        const { headers, body, statusCode } = response;
+        resData = body;
+        fullandFinalData = resData;
+        console.log(fullandFinalData);
+        ppbwla = resData.PPBWLA.item;
+        console.log(ppbwla);
+        wagetype = resData.WAGETYPES.item;
+        console.log(wagetype);
+        ret = body.RETURN.TYPE;
+        console.log(ret);
+        if (wagetype.length < 1) {
+            ret = 'E';
+        }
+    }
+    catch (err) {
+        ret = 'E';
+    }
+
+    return [fullandFinalData, ppbwla, wagetype, ret];
+};
+
+
+
+
+app.post('/employeeFullandFinal', (req, res) => {
+
+    employee = employeeid;
+    let prom = employeeFullandFinal(employee);
+    let arr = [];
+
+    prom.then(([fullandFinalData, ppbwla, wagetype, ret]) => {
+        if (ret === 'S') {
+            let joining = moment(fullandFinalData.JOINING_DATE).format("DD/MM/YYYY");
+            let leaving = moment(fullandFinalData.LEAVING_DATE).format("DD/MM/YYYY");
+            // console.log(todayDate);
+            let obj = `{
+                "APPROVER": "${fullandFinalData.APPROVER}​​​​​​​​​",
+                "COMPANY": "${fullandFinalData.COMPANY}​​​​​​​​​",
+                "COMPANYCODE": "${fullandFinalData.COMPANYCODE}​​​​​​​​​",
+                "COSTCENTER": "${fullandFinalData.COSTCENTER}​​​​​​​​​",
+                "COSTCENTRE_DESC": "${fullandFinalData.COSTCENTRE_DESC}​​​​​​​​​",
+                "CURRENCY": "${fullandFinalData.CURRENCY}​​​​​​​​​",
+                "DEPARTMENT": "${fullandFinalData.DEPARTMENT}​​​​​​​​​",
+                "DIVISION": "${fullandFinalData.DIVISION}​​​​​​​​​",
+                "FNAME": "${fullandFinalData.FNAME}​​​​​​​​​",
+                "LNAME": "${fullandFinalData.LNAME}​​​​​​​​​",
+                "JOB": "${fullandFinalData.JOB}​​​​​​​​​",
+                "JOINING_DATE": "${joining}​​​​​​​​​",
+                "LEAVING_DATE": "${leaving}​​​​​​​​​",
+                "TENURE_PERIOD": "${fullandFinalData.TENURE_PERIOD}​​​​​​​​​",
+                "NUM_OF_LEAVES": "${fullandFinalData.NUM_OF_LEAVES}​​​​​​​​​",
+                "GROSS_SAL": "${fullandFinalData.GROSS_SAL}​​​​​​​​​",
+                "ADDITIONAL_PAY": "${fullandFinalData.ADDITIONAL_PAY}​​​​​​​​​",
+                "DEDUCT_AMT": "${fullandFinalData.DEDUCT_AMT}​​​​​​​​​",
+                "NET_SAL": "${fullandFinalData.NET_SAL}​​​​​​​​​",
+                "EMPID": "${employeeid}​​​​​​​​​"
+            }`;
+
+
+            arr = JSON.parse(obj);
+            // arr = obj;
+
+            let arr1 = [];
+            ppbwla.forEach((elm) => {
+                let obj = `{ 
+                    "WAGE_TYPE": "${elm.LGART}",
+                    "CURRENCY": "${elm.WAERS}",
+                    "AMOUNT": "${elm.BETRG}"
+                }`;
+                arr1.push(JSON.parse(obj));
+            })
+
+            let arr2 = [];
+            wagetype.forEach((elm) => {
+                let obj = `{ 
+                    "WAGE_TYPE": "${elm.WAGETYPE}",
+                    "NAMEOFWAGETYPE": "${elm.NAMEOFWAGETYPE}"
+                }`;
+                arr2.push(JSON.parse(obj));
+            })
+
+            res.status(200).send({ fullandFinal_data: arr, ppwla: arr1, wagetype: arr2 });
+        }
+        else {
+            res.status(401).send("No Full and Final data found here");
+        }
+    });
+})
+
+
+
+
 app.listen(port, () => {
     console.log('server running');
 })
+
+
+
